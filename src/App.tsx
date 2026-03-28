@@ -21,19 +21,19 @@ export default function App() {
         Export PDF
       </motion.button>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 print:!grid print:!grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 print:!flex print:flex-col gap-12">
 
           {/* Left Column - Fixed on Desktop */}
-          <div className="lg:col-span-4 print:!col-span-4 space-y-8">
-            <div className="lg:sticky lg:top-12 space-y-8">
+          <div className="lg:col-span-4 print:!w-full space-y-8">
+            <div className="lg:sticky lg:top-12 print:relative print:top-auto print:flex print:flex-row print:items-center print:gap-8 space-y-8 print:space-y-0">
 
               {/* Avatar - hidden on print for ATS */}
-              <div className="relative rounded-2xl overflow-hidden bg-brown-800 aspect-square border border-gold-500/20 shadow-2xl shadow-gold-500/5">
+              <div className="relative rounded-2xl overflow-hidden bg-brown-800 aspect-square border border-gold-500/20 shadow-2xl shadow-gold-500/5 print:w-40 print:h-40 print:shrink-0">
                 <img src={avatarUrl} alt="Stephen Cheng" className="w-full h-full object-cover" />
               </div>
 
               {/* Contact Info */}
-              <div className="space-y-6 bg-brown-900/50 p-8 rounded-2xl border border-gold-500/10">
+              <div className="space-y-6 bg-brown-900/50 p-8 rounded-2xl border border-gold-500/10 print:flex-1 print:p-0 print:bg-transparent print:border-none print:space-y-3">
                 <h1 className="text-4xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-gold-500 to-gold-600 print:bg-none print:text-gold-500 print:[-webkit-text-fill-color:currentColor]">
                   TRỊNH THÁI ANH
                 </h1>
@@ -44,7 +44,7 @@ export default function App() {
                   AI-First Solution Architect
                 </p>
 
-                <div className="space-y-4 pt-2">
+                <div className="space-y-4 pt-2 print:flex print:flex-row print:flex-wrap print:gap-x-6 print:gap-y-3 print:space-y-0">
                   <a href="mailto:zintaen@gmail.com" className="flex items-center gap-4 text-brown-100/70 hover:text-gold-400 transition-colors">
                     <div className="w-10 h-10 rounded-full bg-brown-800 flex items-center justify-center border border-gold-500/20 shrink-0">
                       <Mail aria-hidden="true" className="w-4 h-4" />
@@ -76,7 +76,7 @@ export default function App() {
           </div>
 
           {/* Right Column - Scrollable Content */}
-          <div className="lg:col-span-8 print:!col-span-8 space-y-12">
+          <div className="lg:col-span-8 print:!w-full space-y-12">
 
             {/* Executive Summary */}
             <motion.section
@@ -236,7 +236,7 @@ export default function App() {
               </div>
 
               {/* Education - CMU Dominant */}
-              <div className="p-6 rounded-xl bg-brown-800/50 border border-gold-500/10 print-break-avoid">
+              <div className="p-6 rounded-xl bg-brown-800/50 border border-gold-500/10 print:break-inside-avoid">
                 <div className="flex gap-4 items-start">
                   <div className="w-12 h-12 rounded-full bg-gold-500/10 flex items-center justify-center shrink-0">
                     <GraduationCap aria-hidden="true" className="w-6 h-6 text-gold-500" />
@@ -287,7 +287,7 @@ export default function App() {
 
 function CompetencyCard({ title, skills, className = "" }: { title: string, skills: string[], className?: string }) {
   return (
-    <div className={`p-6 rounded-xl bg-brown-900/40 border border-gold-500/10 hover:border-gold-500/30 transition-colors print-break-avoid ${className}`}>
+    <div className={`p-6 rounded-xl bg-brown-900/40 border border-gold-500/10 hover:border-gold-500/30 transition-colors print:break-inside-avoid ${className}`}>
       <h4 className="text-gold-300 font-semibold mb-4 text-lg">{title}</h4>
       <div className="flex flex-wrap gap-2">
         {skills.map((skill, i) => (
@@ -309,7 +309,7 @@ function CompetencyCard({ title, skills, className = "" }: { title: string, skil
 
 function ExperienceItem({ company, role, location, date, bullets }: { company: string, role: string, location: string, date: string, bullets: string[] }) {
   return (
-    <div className="relative pl-8 md:pl-0 group">
+    <div className="relative pl-8 md:pl-0 group print:break-inside-avoid">
       <div className="md:hidden absolute left-0 top-2 w-2 h-2 rounded-full bg-gold-500 ring-4 ring-brown-950" />
 
       <div className="flex flex-col md:flex-row gap-4 md:gap-8">
@@ -347,7 +347,7 @@ function ExperienceItem({ company, role, location, date, bullets }: { company: s
 
 function CertItem({ title, subtitle }: { title: string, subtitle?: string }) {
   return (
-    <div className="p-4 rounded-xl bg-brown-900/40 border border-gold-500/10 flex items-start gap-3 print-break-avoid">
+    <div className="p-4 rounded-xl bg-brown-900/40 border border-gold-500/10 flex items-start gap-3 print:break-inside-avoid">
       <Award aria-hidden="true" className="w-5 h-5 text-gold-500 shrink-0 mt-0.5" />
       <div>
         <span className="text-brown-100/80 text-sm leading-relaxed">{title}</span>
