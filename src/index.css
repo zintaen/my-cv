@@ -1,27 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Outfit", system-ui, sans-serif;
-  --font-serif: "Playfair+Display", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Manrope", system-ui, sans-serif;
+  --font-mono: "Space Grotesk", monospace;
   
-  --color-gold-300: #F3E5AB;
-  --color-gold-400: #E5C158;
-  --color-gold-500: #D4AF37;
-  --color-gold-600: #AA8C2C;
+  --color-surface: #131313;
+  --color-surface-container-low: #1c1b1b;
+  --color-surface-container: #201f1f;
+  --color-surface-bright: #393939;
+  --color-surface-highest: #2a2a2a;
   
-  --color-brown-950: #0D0B0A;
-  --color-brown-900: #1A1614;
-  --color-brown-800: #2A2421;
-  --color-brown-700: #3A322D;
-  --color-brown-600: #5C4D45;
-  --color-brown-100: #F5F0E6;
-  --color-brown-50: #FCFAF8;
+  --color-primary: #f2ca50;
+  --color-primary-container: #d4af37;
+  --color-surface-tint: #e9c349;
+  
+  --color-on-surface: #e5e2e1;
+  --color-on-surface-variant: #d0c5af;
+  --color-outline-variant: rgba(255, 255, 255, 0.15);
 }
 
 body {
-  background-color: var(--color-brown-950);
-  color: var(--color-brown-100);
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
   font-family: var(--font-sans);
 }
 
