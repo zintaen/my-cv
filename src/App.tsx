@@ -69,6 +69,12 @@ export default function App() {
                     </div>
                     <span className="text-sm truncate"><span className="inline-block w-[1px] opacity-0 text-[1px] overflow-hidden select-all whitespace-pre">LinkedIn: https://</span>linkedin.com/in/zintaen</span>
                   </a>
+                  <a href="https://credly.com/users/zintaen" target="_blank" rel="noreferrer" className="flex items-center gap-4 text-brown-100/70 hover:text-gold-400 transition-colors">
+                    <div className="w-10 h-10 rounded-full bg-brown-800 flex items-center justify-center border border-gold-500/20 shrink-0">
+                      <Award aria-hidden="true" className="w-4 h-4" />
+                    </div>
+                    <span className="text-sm truncate"><span className="inline-block w-[1px] opacity-0 text-[1px] overflow-hidden select-all whitespace-pre">Portfolio: https://</span>credly.com/users/zintaen</span>
+                  </a>
                 </div>
               </div>
 
@@ -142,8 +148,8 @@ export default function App() {
               <div className="space-y-12">
 
                 <ExperienceItem
-                  company="AI-First Solution Architect — Professional Sabbatical"
-                  role="Advanced AI Architecture Specialization"
+                  company="Independent Consultant / AI-First Solution Architect"
+                  role="Consulting & AI Architecture"
                   location="Ho Chi Minh City, Vietnam"
                   date="January 2026 - Present"
                   bullets={[
@@ -256,6 +262,10 @@ export default function App() {
                   subtitle="Anthropic • 03/2026"
                 />
                 <CertItem
+                  title="Microsoft Certified: Agentic AI Business Solutions Architect"
+                  subtitle="Microsoft • 03/2026"
+                />
+                <CertItem
                   title="Microsoft Certified: Fabric Analytics Engineer Associate (DP-600)"
                   subtitle="Microsoft • 02/2026"
                 />
@@ -268,12 +278,8 @@ export default function App() {
                   subtitle="Microsoft • 02/2026"
                 />
                 <CertItem
-                  title="Google Certified Educator Level 1 & Level 2"
-                  subtitle="Google for Education • 12/2025"
-                />
-                <CertItem
-                  title="Gemini Certified Educator & University Student"
-                  subtitle="Google for Education • 12/2025"
+                  title="AI Workplace Proficiency Certification"
+                  subtitle="Microsoft • 02/2026"
                 />
               </div>
             </motion.section>
