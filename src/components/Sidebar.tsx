@@ -1,3 +1,4 @@
+import React from 'react';
 import { Mail, Phone, Globe, Code2 } from 'lucide-react';
 import type { ProfileData, SkillGroup } from '../data/cv';
 import { IconRenderer } from './ui/IconRenderer';
@@ -58,6 +59,7 @@ export function Sidebar({ profile, skillGroups }: SidebarProps) {
                 icon={skill.icon} 
                 title={skill.title} 
                 subtitle={skill.subtitle} 
+                url={skill.url}
               />
             ))}
           </SkillBlock>
@@ -69,7 +71,7 @@ export function Sidebar({ profile, skillGroups }: SidebarProps) {
 
 /* --- Subcomponents --- */
 
-function SkillBlock({ title, children }: { title: string, children: React.ReactNode }) {
+const SkillBlock: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => {
   return (
     <div className="space-y-4">
       <h3 className="font-mono text-xs tracking-[0.2em] text-on-surface-variant uppercase text-center border-b border-outline-variant/50 pb-2">
@@ -82,14 +84,24 @@ function SkillBlock({ title, children }: { title: string, children: React.ReactN
   );
 }
 
-function SkillCard({ icon, title, subtitle }: { icon: import('../data/cv').AppIcon, title: string, subtitle?: string }) {
-  return (
-    <div className="flex flex-col items-center text-center p-3 rounded-lg bg-surface-container border border-outline-variant/30 text-surface-tint hover:bg-surface-bright hover:border-primary/50 transition-colors">
-      <div className="[&>svg]:w-6 [&>svg]:h-6 [&>img]:w-6 [&>img]:h-6 mb-2 opacity-90">
-        <IconRenderer icon={icon} />
+const SkillCard: React.FC<{ icon: import('../data/cv').AppIcon; title: string; subtitle?: string; url?: string }> = ({ icon, title, subtitle, url }) => {
+  const content = (
+    <div className={`flex flex-col items-center justify-start text-center p-3 h-full rounded-lg bg-surface-container border border-outline-variant/30 text-surface-tint transition-all ${url ? 'group-hover:bg-surface-bright group-hover:border-primary/50 shadow-sm group-hover:shadow-md' : 'hover:bg-surface-bright hover:border-primary/50'}`}>
+      <div className="flex items-center justify-center w-7 h-7 mb-2 opacity-90 shrink-0">
+        <IconRenderer icon={icon} className="w-full h-full object-contain" />
       </div>
-      <div className="font-sans font-medium text-[10px] leading-tight text-white mb-0.5">{title}</div>
-      {subtitle && <div className="font-mono text-[8px] leading-tight text-on-surface-variant opacity-80">{subtitle}</div>}
+      <div className="font-sans font-medium text-[10px] leading-tight text-white mb-0.5 px-1">{title}</div>
+      {subtitle && <div className="font-mono text-[8px] leading-tight text-on-surface-variant opacity-80 mt-0.5 px-1">{subtitle}</div>}
     </div>
   );
-}
+
+  if (url) {
+    return (
+      <a href={url} target="_blank" rel="noreferrer" className="group block outline-none rounded-lg focus-visible:ring-2 focus-visible:ring-primary h-full hover:-translate-y-1 transition-transform">
+        {content}
+      </a>
+    );
+  }
+
+  return <div className="h-full">{content}</div>;
+};

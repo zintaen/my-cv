@@ -35,7 +35,7 @@ export function Credentials({ academic, certifications }: CredentialsProps) {
         {/* Certifications */}
         <div>
           <h4 className="font-sans font-medium text-sm text-on-surface-variant mb-4">Certifications</h4>
-          <div className="space-y-4">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-3">
             {certifications.map((cert, i) => (
               <CertItem key={i} cert={cert} />
             ))}
@@ -54,7 +54,7 @@ function CertItem({ cert }: { cert: Certification }) {
       href={cert.url} 
       target="_blank" 
       rel="noreferrer" 
-      className="flex items-center gap-4 p-2 -mx-2 rounded-lg"
+      className="flex items-start gap-3 p-2 rounded-lg"
     >
       <div className="w-10 h-10 rounded-sm bg-surface-container flex items-center justify-center border border-outline-variant/30 overflow-hidden shrink-0 relative">
         <img 
