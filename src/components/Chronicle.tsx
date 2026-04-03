@@ -9,16 +9,13 @@ interface ChronicleProps {
 export function Chronicle({ experiences }: ChronicleProps) {
   return (
     <section>
-      <div className="flex justify-between items-end border-b border-outline-variant pb-4 mb-8">
+      <div className="border-b border-outline-variant pb-4 mb-8">
         <h2 className="font-mono text-sm tracking-widest text-on-surface-variant uppercase">
           Professional
           <span className="block font-serif text-4xl text-primary font-bold tracking-tight mt-2 capitalize">
-            CHRONICLE
+            EXPERIENCE
           </span>
         </h2>
-        <div className="font-mono text-xs tracking-widest text-on-surface-variant uppercase mb-1">
-          Ships in harbor are safe, but that's not what ships are built for!
-        </div>
       </div>
 
       <div className="relative space-y-12">

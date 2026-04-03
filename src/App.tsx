@@ -28,7 +28,7 @@ export default function App() {
         <div id="cv-grid" className="grid grid-cols-1 lg:grid-cols-[1fr_2.2fr] gap-x-12 gap-y-16">
 
           {/* LEFT SIDEBAR (30%) */}
-          <Sidebar profile={cvData.profile} skillGroups={cvData.skillGroups} />
+          <Sidebar profile={cvData.profile} skillGroups={cvData.skillGroups} professionalSummary={cvData.professionalSummary} />
 
           {/* RIGHT CONTENT (70%) */}
           <main className="space-y-16">

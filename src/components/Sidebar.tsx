@@ -6,9 +6,10 @@ import { IconRenderer } from './ui/IconRenderer';
 interface SidebarProps {
   profile: ProfileData;
   skillGroups: SkillGroup[];
+  professionalSummary: string;
 }
 
-export function Sidebar({ profile, skillGroups }: SidebarProps) {
+export function Sidebar({ profile, skillGroups, professionalSummary }: SidebarProps) {
   return (
     <aside className="space-y-12 shrink-0">
       {/* Profile Info */}
@@ -21,7 +22,6 @@ export function Sidebar({ profile, skillGroups }: SidebarProps) {
           <div>
             <h1 className="font-serif text-2xl md:text-3xl font-bold leading-tight tracking-tight text-white">
               {profile.name}
-              {profile.alias && <><br /><span className="text-xl md:text-2xl text-on-surface-variant font-medium">{profile.alias}</span></>}
             </h1>
             <p className="font-mono text-primary tracking-widest text-[11px] font-semibold mt-2">
               {profile.title}
@@ -47,6 +47,16 @@ export function Sidebar({ profile, skillGroups }: SidebarProps) {
             <a href={`https://${profile.contact.github}`} target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">{profile.contact.github}</a>
           </div>
         </div>
+      </div>
+
+      {/* Professional Summary */}
+      <div className="space-y-3">
+        <h3 className="font-mono text-xs tracking-[0.2em] text-on-surface-variant uppercase text-center border-b border-outline-variant/50 pb-2">
+          Professional Summary
+        </h3>
+        <p className="font-sans text-xs leading-relaxed text-on-surface-variant">
+          {professionalSummary}
+        </p>
       </div>
 
       {/* Skills Grid Collections */}
