@@ -1,32 +1,56 @@
 {
-  "name": "my-cv",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "vite build",
-    "preview": "vite preview",
-    "clean": "rm -rf dist",
-    "lint": "tsc --noEmit",
-    "pdf": "node scripts/generate-pdf.mjs"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "4.2.2",
-    "@vitejs/plugin-react": "6.0.1",
-    "lucide-react": "1.7.0",
-    "motion": "12.38.0",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
-    "vite": "8.0.3"
-  },
-  "devDependencies": {
-    "@types/node": "25.5.0",
-    "autoprefixer": "10.4.27",
-    "pdf-lib": "1.17.1",
-    "puppeteer": "24.40.0",
-    "tailwindcss": "4.2.2",
-    "typescript": "6.0.2",
-    "vite": "8.0.3"
-  }
+    "name": "my-cv",
+    "type": "module",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "run-s ready start:dev",
+        "start:dev": "dotenvx run -- vite",
+        "build": "dotenvx run -- vite build",
+        "inspect": "cyberskill inspect",
+        "lint": "cyberskill lint",
+        "lint:fix": "cyberskill lint:fix",
+        "lint:inspect": "cyberskill lint:inspect",
+        "ready": "cyberskill ready",
+        "reset": "cyberskill reset",
+        "pdf": "node scripts/generate-pdf.mjs",
+        "test:e2e": "vitest --config src/shared/vitest/vitest.config.e2e.ts",
+        "test:unit": "vitest --config src/shared/vitest/vitest.config.unit.ts"
+    },
+    "dependencies": {
+        "@cyberskill/shared": "3.18.0",
+        "@tailwindcss/vite": "4.2.2",
+        "@vitejs/plugin-react": "6.0.1",
+        "envalid": "8.1.1",
+        "lucide-react": "1.7.0",
+        "motion": "12.38.0",
+        "react": "19.2.4",
+        "react-dom": "19.2.4",
+        "vite": "8.0.3"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "20.5.0",
+        "@commitlint/config-conventional": "20.5.0",
+        "@eslint/config-inspector": "1.5.0",
+        "@testing-library/jest-dom": "6.9.1",
+        "@testing-library/react": "16.3.2",
+        "@types/node": "25.5.2",
+        "@types/react": "19.2.14",
+        "@types/react-dom": "19.2.3",
+        "@vitest/browser-playwright": "4.1.2",
+        "autoprefixer": "10.4.27",
+        "eslint": "10.2.0",
+        "lint-staged": "16.4.0",
+        "node-modules-inspector": "1.4.2",
+        "npm-run-all2": "8.0.4",
+        "pdf-lib": "1.17.1",
+        "puppeteer": "24.40.0",
+        "simple-git-hooks": "2.13.1",
+        "tailwindcss": "4.2.2",
+        "typescript": "6.0.2",
+        "vite": "8.0.3",
+        "vite-tsconfig-paths": "6.1.1",
+        "vitest": "4.1.2",
+        "vitest-browser-react": "2.2.0"
+    }
 }
