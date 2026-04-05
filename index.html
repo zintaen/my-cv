@@ -4,6 +4,10 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self'; script-src 'self' http://localhost:* ws://localhost:*; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src * data:; connect-src 'self' http://localhost:* ws://localhost:*;"
+        />
+        <meta
             name="description"
             content="Stephen Cheng — AI-First Solution Architect with 8+ years of enterprise software engineering experience spanning React, Next.js, TypeScript, and AI/Agentic orchestration."
         />
@@ -14,6 +18,7 @@
             rel="stylesheet"
         />
         <title>Stephen Cheng — AI-First Solution Architect | CV</title>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     </head>
     <body>
         <div id="root"></div>

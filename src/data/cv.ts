@@ -1,34 +1,36 @@
 import type * as LucideIcons from 'lucide-react';
+import type { FunctionComponent, SVGProps } from 'react';
 
-import angularIcon from './icons/angular.svg';
-import anthropicIcon from './icons/anthropic.svg';
-import argoIcon from './icons/argo.svg';
-import awsIcon from './icons/aws.svg';
-import dockerIcon from './icons/docker.svg';
-import elasticsearchIcon from './icons/elasticsearch.svg';
-import gcpIcon from './icons/googlecloud.svg';
-import graphqlIcon from './icons/graphql.svg';
-import istioIcon from './icons/istio.svg';
-import kubernetesIcon from './icons/kubernetes.svg';
-import langchainIcon from './icons/langchain.svg';
-import nextjsIcon from './icons/nextdotjs.svg';
-import nodejsIcon from './icons/nodedotjs.svg';
-import nvidiaIcon from './icons/nvidia.svg';
-import openaiIcon from './icons/openai.svg';
-import pineconeIcon from './icons/pinecone.svg';
-import postgresqlIcon from './icons/postgresql.svg';
-import pythonIcon from './icons/python.svg';
-import pytorchIcon from './icons/pytorch.svg';
-import reactIcon from './icons/react.svg';
-import reduxIcon from './icons/redux.svg';
-import rustIcon from './icons/rust.svg';
-import typescriptIcon from './icons/typescript.svg';
-import webpackIcon from './icons/webpack.svg';
+import angularIcon from './icons/angular.svg?react';
+import anthropicIcon from './icons/anthropic.svg?react';
+import argoIcon from './icons/argo.svg?react';
+import awsIcon from './icons/aws.svg?react';
+import dockerIcon from './icons/docker.svg?react';
+import elasticsearchIcon from './icons/elasticsearch.svg?react';
+import gcpIcon from './icons/googlecloud.svg?react';
+import graphqlIcon from './icons/graphql.svg?react';
+import istioIcon from './icons/istio.svg?react';
+import kubernetesIcon from './icons/kubernetes.svg?react';
+import langchainIcon from './icons/langchain.svg?react';
+import nextjsIcon from './icons/nextdotjs.svg?react';
+import nodejsIcon from './icons/nodedotjs.svg?react';
+import nvidiaIcon from './icons/nvidia.svg?react';
+import openaiIcon from './icons/openai.svg?react';
+import pineconeIcon from './icons/pinecone.svg?react';
+import postgresqlIcon from './icons/postgresql.svg?react';
+import pythonIcon from './icons/python.svg?react';
+import pytorchIcon from './icons/pytorch.svg?react';
+import reactIcon from './icons/react.svg?react';
+import reduxIcon from './icons/redux.svg?react';
+import rustIcon from './icons/rust.svg?react';
+import typescriptIcon from './icons/typescript.svg?react';
+import webpackIcon from './icons/webpack.svg?react';
 import avatarImg from './my-pic.jpg';
 
 export type AppIcon
     = | { type: 'lucide'; name: keyof typeof LucideIcons }
-        | { type: 'url'; path: string };
+        | { type: 'url'; path: string }
+        | { type: 'svg'; component: FunctionComponent<SVGProps<SVGSVGElement>> };
 
 export interface ProfileData {
     name: string;
@@ -108,23 +110,23 @@ export const cvData: CVData = {
             skills: [
                 { title: 'Agentic OS', icon: { type: 'lucide', name: 'Brain' } },
                 { title: 'RAG', subtitle: 'Retrieval-Augmented Generation', icon: { type: 'lucide', name: 'FileSearch' } },
-                { title: 'Vector Databases', subtitle: '(Pinecone)', icon: { type: 'url', path: pineconeIcon }, url: 'https://www.pinecone.io/' },
-                { title: 'LangChain', icon: { type: 'url', path: langchainIcon }, url: 'https://www.langchain.com/' },
+                { title: 'Vector Databases', subtitle: '(Pinecone)', icon: { type: 'svg', component: pineconeIcon }, url: 'https://www.pinecone.io/' },
+                { title: 'LangChain', icon: { type: 'svg', component: langchainIcon }, url: 'https://www.langchain.com/' },
                 { title: 'LlamaIndex', icon: { type: 'lucide', name: 'Library' }, url: 'https://www.llamaindex.ai/' },
                 { title: 'Model Fine-Tuning', subtitle: '(LoRA)', icon: { type: 'lucide', name: 'SlidersHorizontal' } },
                 { title: 'Prompt Engineering', icon: { type: 'lucide', name: 'SquareTerminal' } },
-                { title: 'Anthropic /', subtitle: 'OpenAI APIs', icon: { type: 'url', path: anthropicIcon }, url: 'https://www.anthropic.com/' },
-                { title: 'OpenAI', icon: { type: 'url', path: openaiIcon }, url: 'https://openai.com/' },
+                { title: 'Anthropic /', subtitle: 'OpenAI APIs', icon: { type: 'svg', component: anthropicIcon }, url: 'https://www.anthropic.com/' },
+                { title: 'OpenAI', icon: { type: 'svg', component: openaiIcon }, url: 'https://openai.com/' },
             ],
         },
         {
             title: 'PERFORMANCE & MLOPS',
             skills: [
-                { title: 'Rust', subtitle: '(kornia-rs)', icon: { type: 'url', path: rustIcon }, url: 'https://www.rust-lang.org/' },
-                { title: 'Python', subtitle: '(PyTorch)', icon: { type: 'url', path: pythonIcon }, url: 'https://www.python.org/' },
-                { title: 'PyTorch', icon: { type: 'url', path: pytorchIcon }, url: 'https://pytorch.org/' },
-                { title: 'Vertex AI', icon: { type: 'url', path: gcpIcon }, url: 'https://cloud.google.com/vertex-ai' },
-                { title: 'TensorRT', icon: { type: 'url', path: nvidiaIcon }, url: 'https://developer.nvidia.com/tensorrt' },
+                { title: 'Rust', subtitle: '(kornia-rs)', icon: { type: 'svg', component: rustIcon }, url: 'https://www.rust-lang.org/' },
+                { title: 'Python', subtitle: '(PyTorch)', icon: { type: 'svg', component: pythonIcon }, url: 'https://www.python.org/' },
+                { title: 'PyTorch', icon: { type: 'svg', component: pytorchIcon }, url: 'https://pytorch.org/' },
+                { title: 'Vertex AI', icon: { type: 'svg', component: gcpIcon }, url: 'https://cloud.google.com/vertex-ai' },
+                { title: 'TensorRT', icon: { type: 'svg', component: nvidiaIcon }, url: 'https://developer.nvidia.com/tensorrt' },
                 { title: 'Model Drift', subtitle: 'Detection', icon: { type: 'lucide', name: 'Activity' } },
                 { title: 'Inference Latency', subtitle: 'Optimization', icon: { type: 'lucide', name: 'Gauge' } },
                 { title: 'GPU Workload', subtitle: 'Shaping', icon: { type: 'lucide', name: 'BarChart3' } },
@@ -133,13 +135,13 @@ export const cvData: CVData = {
         {
             title: 'CLOUD INFRASTRUCTURE',
             skills: [
-                { title: 'GCP', subtitle: 'Google Cloud Platform', icon: { type: 'url', path: gcpIcon }, url: 'https://cloud.google.com/' },
-                { title: 'AWS', icon: { type: 'url', path: awsIcon }, url: 'https://aws.amazon.com/' },
-                { title: 'Kubernetes', subtitle: '(GKE)', icon: { type: 'url', path: kubernetesIcon }, url: 'https://kubernetes.io/' },
-                { title: 'Docker', icon: { type: 'url', path: dockerIcon }, url: 'https://www.docker.com/' },
-                { title: 'Anthos', subtitle: 'Service Mesh', icon: { type: 'url', path: gcpIcon }, url: 'https://cloud.google.com/anthos' },
-                { title: 'Istio', icon: { type: 'url', path: istioIcon }, url: 'https://istio.io/' },
-                { title: 'Argo Workflows', icon: { type: 'url', path: argoIcon }, url: 'https://argoproj.github.io/' },
+                { title: 'GCP', subtitle: 'Google Cloud Platform', icon: { type: 'svg', component: gcpIcon }, url: 'https://cloud.google.com/' },
+                { title: 'AWS', icon: { type: 'svg', component: awsIcon }, url: 'https://aws.amazon.com/' },
+                { title: 'Kubernetes', subtitle: '(GKE)', icon: { type: 'svg', component: kubernetesIcon }, url: 'https://kubernetes.io/' },
+                { title: 'Docker', icon: { type: 'svg', component: dockerIcon }, url: 'https://www.docker.com/' },
+                { title: 'Anthos', subtitle: 'Service Mesh', icon: { type: 'svg', component: gcpIcon }, url: 'https://cloud.google.com/anthos' },
+                { title: 'Istio', icon: { type: 'svg', component: istioIcon }, url: 'https://istio.io/' },
+                { title: 'Argo Workflows', icon: { type: 'svg', component: argoIcon }, url: 'https://argoproj.github.io/' },
                 { title: 'High Availability', subtitle: '(HA)', icon: { type: 'lucide', name: 'HeartPulse' } },
                 { title: 'Disaster Recovery', subtitle: '(DR)', icon: { type: 'lucide', name: 'ShieldAlert' } },
             ],
@@ -147,26 +149,26 @@ export const cvData: CVData = {
         {
             title: 'BACKEND & INTEGRATION',
             skills: [
-                { title: 'Node.js', subtitle: '(NestJS, Fastify)', icon: { type: 'url', path: nodejsIcon }, url: 'https://nodejs.org/' },
-                { title: 'TypeScript', icon: { type: 'url', path: typescriptIcon }, url: 'https://www.typescriptlang.org/' },
+                { title: 'Node.js', subtitle: '(NestJS, Fastify)', icon: { type: 'svg', component: nodejsIcon }, url: 'https://nodejs.org/' },
+                { title: 'TypeScript', icon: { type: 'svg', component: typescriptIcon }, url: 'https://www.typescriptlang.org/' },
                 { title: 'Event-Driven', subtitle: 'Architecture', icon: { type: 'lucide', name: 'Radio' } },
-                { title: 'Cloud Pub/Sub', icon: { type: 'url', path: gcpIcon }, url: 'https://cloud.google.com/pubsub' },
+                { title: 'Cloud Pub/Sub', icon: { type: 'svg', component: gcpIcon }, url: 'https://cloud.google.com/pubsub' },
                 { title: 'RESTful APIs', icon: { type: 'lucide', name: 'Globe' } },
                 { title: 'Semantic APIs', icon: { type: 'lucide', name: 'Braces' } },
-                { title: 'GraphQL', icon: { type: 'url', path: graphqlIcon }, url: 'https://graphql.org/' },
-                { title: 'PostgreSQL', icon: { type: 'url', path: postgresqlIcon }, url: 'https://www.postgresql.org/' },
-                { title: 'Elasticsearch', icon: { type: 'url', path: elasticsearchIcon }, url: 'https://www.elastic.co/' },
+                { title: 'GraphQL', icon: { type: 'svg', component: graphqlIcon }, url: 'https://graphql.org/' },
+                { title: 'PostgreSQL', icon: { type: 'svg', component: postgresqlIcon }, url: 'https://www.postgresql.org/' },
+                { title: 'Elasticsearch', icon: { type: 'svg', component: elasticsearchIcon }, url: 'https://www.elastic.co/' },
             ],
         },
         {
             title: 'ADVANCED FRONTEND',
             skills: [
-                { title: 'React 19', icon: { type: 'url', path: reactIcon }, url: 'https://react.dev/' },
-                { title: 'Next.js', icon: { type: 'url', path: nextjsIcon }, url: 'https://nextjs.org/' },
-                { title: 'Angular', icon: { type: 'url', path: angularIcon }, url: 'https://angular.io/' },
-                { title: 'Webpack Module', subtitle: 'Federation', icon: { type: 'url', path: webpackIcon }, url: 'https://webpack.js.org/' },
+                { title: 'React 19', icon: { type: 'svg', component: reactIcon }, url: 'https://react.dev/' },
+                { title: 'Next.js', icon: { type: 'svg', component: nextjsIcon }, url: 'https://nextjs.org/' },
+                { title: 'Angular', icon: { type: 'svg', component: angularIcon }, url: 'https://angular.io/' },
+                { title: 'Webpack Module', subtitle: 'Federation', icon: { type: 'svg', component: webpackIcon }, url: 'https://webpack.js.org/' },
                 { title: 'Micro-frontends', icon: { type: 'lucide', name: 'LayoutGrid' } },
-                { title: 'State Management', subtitle: '(Redux)', icon: { type: 'url', path: reduxIcon }, url: 'https://redux.js.org/' },
+                { title: 'State Management', subtitle: '(Redux)', icon: { type: 'svg', component: reduxIcon }, url: 'https://redux.js.org/' },
                 { title: 'Core Web Vitals', subtitle: 'Optimization', icon: { type: 'lucide', name: 'Gauge' } },
             ],
         },

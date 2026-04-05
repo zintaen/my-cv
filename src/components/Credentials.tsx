@@ -1,5 +1,7 @@
 import type { Academic, Certification } from '../data/cv';
 
+import { CertItem } from './credentials/CertItem';
+
 interface CredentialsProps {
     academic: Academic;
     certifications: Certification[];
@@ -37,41 +39,12 @@ export function Credentials({ academic, certifications }: CredentialsProps) {
                 <div>
                     <h4 className="font-sans font-medium text-sm text-on-surface-variant mb-4">Certifications</h4>
                     <div className="grid grid-cols-2 gap-x-6 gap-y-3">
-                        {certifications.map((cert, i) => (
-                            <CertItem key={i} cert={cert} />
+                        {certifications.map(cert => (
+                            <CertItem key={cert.title} cert={cert} />
                         ))}
                     </div>
                 </div>
             </div>
         </section>
-    );
-}
-
-/* --- Subcomponents --- */
-
-function CertItem({ cert }: { cert: Certification }) {
-    return (
-        <a
-            href={cert.url}
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-start gap-3 p-2 rounded-lg"
-        >
-            <div className="w-10 h-10 rounded-sm bg-surface-container flex items-center justify-center border border-outline-variant/30 overflow-hidden shrink-0 relative">
-                <img
-                    src={cert.badgeImage}
-                    alt={cert.issuedBy}
-                    className="w-full h-full object-contain p-1"
-                />
-            </div>
-            <div className="flex-1">
-                <div className="font-sans text-sm text-white font-medium leading-tight">
-                    {cert.title}
-                </div>
-                <div className="font-mono text-[10px] uppercase tracking-wider text-on-surface-variant mt-1">
-                    {cert.issuedBy}
-                </div>
-            </div>
-        </a>
     );
 }

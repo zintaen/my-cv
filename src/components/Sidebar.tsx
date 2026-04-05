@@ -1,9 +1,9 @@
 import { Code2, Globe, Mail, Phone } from 'lucide-react';
-import * as React from 'react';
 
 import type { ProfileData, SkillGroup } from '../data/cv';
 
-import { IconRenderer } from './ui/IconRenderer';
+import { SkillBlock } from './sidebar/SkillBlock';
+import { SkillCard } from './sidebar/SkillCard';
 
 interface SidebarProps {
     profile: ProfileData;
@@ -34,19 +34,19 @@ export function Sidebar({ profile, skillGroups, professionalSummary }: SidebarPr
                 <div className="space-y-3 font-sans text-sm text-on-surface-variant pr-4">
                     <div className="flex items-center gap-3">
                         <Mail className="w-4 h-4 text-primary shrink-0" />
-                        <a href={`mailto:${profile.contact.email}`} className="hover:text-primary transition-colors">{profile.contact.email}</a>
+                        <a href={`mailto:${profile.contact.email}`} aria-label={`Email ${profile.contact.email}`} className="hover:text-primary transition-colors">{profile.contact.email}</a>
                     </div>
                     <div className="flex items-center gap-3">
                         <Phone className="w-4 h-4 text-primary shrink-0" />
-                        <a href={`https://wa.me/${profile.contact.phone.replace(/\\D/g, '')}`} target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">{profile.contact.phone}</a>
+                        <a href={`https://wa.me/${profile.contact.phone.replace(/\\D/g, '')}`} target="_blank" rel="noreferrer" aria-label={`WhatsApp ${profile.contact.phone}`} className="hover:text-primary transition-colors">{profile.contact.phone}</a>
                     </div>
                     <div className="flex items-center gap-3">
                         <Globe className="w-4 h-4 text-primary shrink-0" />
-                        <a href={`https://${profile.contact.linkedin}`} target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">{profile.contact.linkedin}</a>
+                        <a href={`https://${profile.contact.linkedin}`} target="_blank" rel="noreferrer" aria-label="LinkedIn Profile" className="hover:text-primary transition-colors">{profile.contact.linkedin}</a>
                     </div>
                     <div className="flex items-center gap-3">
                         <Code2 className="w-4 h-4 text-primary shrink-0" />
-                        <a href={`https://${profile.contact.github}`} target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">{profile.contact.github}</a>
+                        <a href={`https://${profile.contact.github}`} target="_blank" rel="noreferrer" aria-label="GitHub Profile" className="hover:text-primary transition-colors">{profile.contact.github}</a>
                     </div>
                 </div>
             </div>
@@ -63,11 +63,11 @@ export function Sidebar({ profile, skillGroups, professionalSummary }: SidebarPr
 
             {/* Skills Grid Collections */}
             <div className="space-y-10">
-                {skillGroups.map((group, i) => (
-                    <SkillBlock key={i} title={group.title}>
-                        {group.skills.map((skill, j) => (
+                {skillGroups.map(group => (
+                    <SkillBlock key={group.title} title={group.title}>
+                        {group.skills.map(skill => (
                             <SkillCard
-                                key={j}
+                                key={skill.title}
                                 icon={skill.icon}
                                 title={skill.title}
                                 subtitle={skill.subtitle}
@@ -80,40 +80,3 @@ export function Sidebar({ profile, skillGroups, professionalSummary }: SidebarPr
         </aside>
     );
 }
-
-/* --- Subcomponents --- */
-
-function SkillBlock({ title, children }: { title: string; children: React.ReactNode }) {
-    return (
-        <div className="space-y-4">
-            <h3 className="font-mono text-xs tracking-[0.2em] text-on-surface-variant uppercase text-center border-b border-outline-variant/50 pb-2">
-                {title}
-            </h3>
-            <div className="grid grid-cols-3 gap-2">
-                {children}
-            </div>
-        </div>
-    );
-};
-
-function SkillCard({ icon, title, subtitle, url }: { icon: import('../data/cv').AppIcon; title: string; subtitle?: string; url?: string }) {
-    const content = (
-        <div className={`flex flex-col items-center justify-start text-center p-3 h-full rounded-lg bg-surface-container border border-outline-variant/30 text-surface-tint transition-all ${url ? 'group-hover:bg-surface-bright group-hover:border-primary/50 shadow-sm group-hover:shadow-md' : 'hover:bg-surface-bright hover:border-primary/50'}`}>
-            <div className="flex items-center justify-center w-7 h-7 mb-2 opacity-90 shrink-0">
-                <IconRenderer icon={icon} className="w-full h-full object-contain" />
-            </div>
-            <div className="font-sans font-medium text-[10px] leading-tight text-white mb-0.5 px-1">{title}</div>
-            {subtitle && <div className="font-mono text-[8px] leading-tight text-on-surface-variant opacity-80 mt-0.5 px-1">{subtitle}</div>}
-        </div>
-    );
-
-    if (url) {
-        return (
-            <a href={url} target="_blank" rel="noreferrer" className="group block outline-none rounded-lg focus-visible:ring-2 focus-visible:ring-primary h-full hover:-translate-y-1 transition-transform">
-                {content}
-            </a>
-        );
-    }
-
-    return <div className="h-full">{content}</div>;
-};
