@@ -3,8 +3,6 @@ name: 🧪 CI - Check
 on:
   workflow_dispatch:
   pull_request:
-    branches-ignore:
-      - main
 jobs:
   check:
     name: 🧪 Check
