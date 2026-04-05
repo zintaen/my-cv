@@ -14,10 +14,11 @@
  *   pnpm pdf out.pdf    # custom output path
  */
 
+import { spawn } from 'node:child_process';
+import { dirname, resolve } from 'node:path';
+import process from 'node:process';
+import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
-import { spawn } from 'child_process';
-import { resolve, dirname } from 'path';
-import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const projectRoot = resolve(__dirname, '..');
@@ -40,89 +41,102 @@ const PDF_ZOOM = A4_CSS_WIDTH / VIEWPORT_WIDTH; // ≈ 0.551
  * Start the Vite dev server in the background.
  */
 function startDevServer() {
-  return new Promise((resolvePromise, reject) => {
-    const server = spawn(
-      'sh',
-      ['-c', `npx vite --port ${DEV_PORT}`],
-      {
-        cwd: projectRoot,
-        stdio: ['ignore', 'pipe', 'pipe'],
-        env: { ...process.env, FORCE_COLOR: '0' },
-      }
-    );
+    return new Promise((resolvePromise, reject) => {
+        const server = spawn(
+            'sh',
+            ['-c', `npx vite --port ${DEV_PORT}`],
+            {
+                cwd: projectRoot,
+                stdio: ['ignore', 'pipe', 'pipe'],
+                env: { ...process.env, FORCE_COLOR: '0' },
+            },
+        );
 
-    let started = false;
-    let allOutput = '';
+        let started = false;
+        let allOutput = '';
 
-    const onData = (chunk) => {
-      const text = chunk.toString();
-      allOutput += text;
-      if (!started && (text.includes('ready in') || text.includes('Local:'))) {
-        started = true;
-        resolvePromise(() => {
-          server.kill('SIGTERM');
-          try { process.kill(-server.pid, 'SIGTERM'); } catch { }
+        const onData = (chunk) => {
+            const text = chunk.toString();
+            allOutput += text;
+            if (!started && (text.includes('ready in') || text.includes('Local:'))) {
+                started = true;
+                resolvePromise(() => {
+                    server.kill('SIGTERM');
+                    try {
+                        process.kill(-server.pid, 'SIGTERM');
+                    }
+                    catch {
+                        // ignore
+                    }
+                });
+            }
+        };
+
+        server.stdout.on('data', onData);
+        server.stderr.on('data', onData);
+        server.on('error', (err) => {
+            if (!started)
+                reject(err);
         });
-      }
-    };
-
-    server.stdout.on('data', onData);
-    server.stderr.on('data', onData);
-    server.on('error', (err) => { if (!started) reject(err); });
-    server.on('exit', (code) => {
-      if (!started) reject(new Error(`Vite exited with code ${code}.\n${allOutput}`));
+        server.on('exit', (code) => {
+            if (!started)
+                reject(new Error(`Vite exited with code ${code}.\n${allOutput}`));
+        });
+        setTimeout(() => {
+            if (!started) {
+                server.kill('SIGTERM');
+                reject(new Error(`Vite timeout.\n${allOutput}`));
+            }
+        }, 30000);
     });
-    setTimeout(() => {
-      if (!started) { server.kill('SIGTERM'); reject(new Error(`Vite timeout.\n${allOutput}`)); }
-    }, 30000);
-  });
 }
 
 async function generatePdf() {
-  console.log('🚀 Starting Vite dev server…');
-  const stopServer = await startDevServer();
+    console.log('🚀 Starting Vite dev server…');
+    const stopServer = await startDevServer();
 
-  try {
-    console.log('🌐 Launching headless Chrome…');
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    });
-    const page = await browser.newPage();
+    try {
+        console.log('🌐 Launching headless Chrome…');
+        const browser = await puppeteer.launch({
+            headless: true,
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        });
+        const page = await browser.newPage();
 
-    // Match original viewport for initial page load
-    await page.setViewport({
-      width: VIEWPORT_WIDTH,
-      height: 800,
-      deviceScaleFactor: 2, // High DPI for crisp image assets
-    });
+        // Match original viewport for initial page load
+        await page.setViewport({
+            width: VIEWPORT_WIDTH,
+            height: 800,
+            deviceScaleFactor: 2, // High DPI for crisp image assets
+        });
 
-    // Use screen media so all screen CSS applies (not print CSS)
-    await page.emulateMediaType('screen');
+        // Use screen media so all screen CSS applies (not print CSS)
+        await page.emulateMediaType('screen');
 
-    console.log(`📄 Navigating to ${DEV_URL}…`);
-    await page.goto(DEV_URL, { waitUntil: 'networkidle0', timeout: 30000 });
+        console.log(`📄 Navigating to ${DEV_URL}…`);
+        await page.goto(DEV_URL, { waitUntil: 'networkidle0', timeout: 30000 });
 
-    // Wait for fonts + images
-    await page.evaluate(() => document.fonts.ready);
-    await new Promise((r) => setTimeout(r, 2000));
+        // Wait for fonts + images
+        await page.evaluate(() => document.fonts.ready);
+        await new Promise(r => setTimeout(r, 2000));
 
-    // Hide the header (Resume title + DOWNLOAD PDF button)
-    // Can't rely on print:hidden since we emulate screen media
-    await page.evaluate(() => {
-      const header = document.querySelector('header');
-      if (header) header.style.display = 'none';
-    });
+        // Hide the header (Resume title + DOWNLOAD PDF button)
+        // Can't rely on print:hidden since we emulate screen media
+        await page.evaluate(() => {
+            const header = document.querySelector('header');
+            if (header)
+                header.style.display = 'none';
+        });
 
-    // ── Inject PDF-specific CSS ──
-    // Chrome's print engine resolves media queries against paper width BEFORE
-    // applying CSS zoom, so lg:/md: breakpoints won't fire on A4 (~794px).
-    // We must force all responsive layouts (grid columns, flex directions,
-    // text sizes, widths) explicitly.
-    console.log(`📐 Injecting PDF layout CSS (zoom: ${PDF_ZOOM.toFixed(4)})…`);
-    await page.evaluate((zoom) => {
-      const style = document.createElement('style');
-      style.textContent = `
+        // ── Inject PDF-specific CSS ──
+        // Chrome's print engine resolves media queries against paper width BEFORE
+        // applying CSS zoom, so lg:/md: breakpoints won't fire on A4 (~794px).
+        // We must force all responsive layouts (grid columns, flex directions,
+        // text sizes, widths) explicitly.
+        console.log(`📐 Injecting PDF layout CSS (zoom: ${PDF_ZOOM.toFixed(4)})…`);
+        await page.evaluate((zoom) => {
+            const style = document.createElement('style');
+            style.textContent = `
         /* ── Scale entire page to fit A4 ────────────────────────────── */
         body {
           zoom: ${zoom} !important;
@@ -269,33 +283,33 @@ async function generatePdf() {
           page-break-inside: avoid;
         }
       `;
-      document.head.appendChild(style);
-    }, PDF_ZOOM);
+            document.head.appendChild(style);
+        }, PDF_ZOOM);
 
-    // ── Generate Native PDF ──
-    console.log('🖨️  Generating PDF via native Chrome print engine…');
-    await page.pdf({
-      path: OUTPUT,
-      format: 'A4',
-      printBackground: true,         // Preserve dark theme backgrounds
-      preferCSSPageSize: false,       // Force A4 regardless of CSS @page
-      margin: {
-        top: '0',
-        bottom: '0',
-        left: '0',
-        right: '0',
-      },
-    });
+        // ── Generate Native PDF ──
+        console.log('🖨️  Generating PDF via native Chrome print engine…');
+        await page.pdf({
+            path: OUTPUT,
+            format: 'A4',
+            printBackground: true, // Preserve dark theme backgrounds
+            preferCSSPageSize: false, // Force A4 regardless of CSS @page
+            margin: {
+                top: '0',
+                bottom: '0',
+                left: '0',
+                right: '0',
+            },
+        });
 
-    await browser.close();
-    console.log(`✅ PDF saved → ${OUTPUT}`);
-
-  } finally {
-    stopServer();
-  }
+        await browser.close();
+        console.log(`✅ PDF saved → ${OUTPUT}`);
+    }
+    finally {
+        stopServer();
+    }
 }
 
 generatePdf().catch((err) => {
-  console.error('❌ PDF generation failed:', err);
-  process.exit(1);
+    console.error('❌ PDF generation failed:', err);
+    process.exit(1);
 });

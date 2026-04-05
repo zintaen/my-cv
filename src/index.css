@@ -1,56 +1,56 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-serif: "Manrope", system-ui, sans-serif;
-  --font-mono: "Space Grotesk", monospace;
-  
-  --color-surface: #131313;
-  --color-surface-container-low: #1c1b1b;
-  --color-surface-container: #201f1f;
-  --color-surface-bright: #393939;
-  --color-surface-highest: #2a2a2a;
-  
-  --color-primary: #f2ca50;
-  --color-primary-container: #d4af37;
-  --color-surface-tint: #e9c349;
-  
-  --color-on-surface: #e5e2e1;
-  --color-on-surface-variant: #d0c5af;
-  --color-outline-variant: rgba(255, 255, 255, 0.15);
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-serif: 'Manrope', system-ui, sans-serif;
+    --font-mono: 'Space Grotesk', monospace;
+
+    --color-surface: #131313;
+    --color-surface-container-low: #1c1b1b;
+    --color-surface-container: #201f1f;
+    --color-surface-bright: #393939;
+    --color-surface-highest: #2a2a2a;
+
+    --color-primary: #f2ca50;
+    --color-primary-container: #d4af37;
+    --color-surface-tint: #e9c349;
+
+    --color-on-surface: #e5e2e1;
+    --color-on-surface-variant: #d0c5af;
+    --color-outline-variant: rgba(255, 255, 255, 0.15);
 }
 
 body {
-  background-color: var(--color-surface);
-  color: var(--color-on-surface);
-  font-family: var(--font-sans);
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+    font-family: var(--font-sans);
 }
 
 @media print {
-  @page {
-    size: A4;
-    margin: 8mm 0;
-  }
-  
-  body {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-    background-color: var(--color-surface);
-  }
-  
-  ::-webkit-scrollbar {
-    display: none;
-  }
-  
-  /* Allow page breaks inside large sections, only avoid on small items */
-  .print-break-avoid {
-    break-inside: avoid;
-  }
-  
-  /* Disable animations for print */
-  * {
-    transition: none !important;
-    animation: none !important;
-    transform: none !important;
-  }
+    @page {
+        size: A4;
+        margin: 8mm 0;
+    }
+
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        background-color: var(--color-surface);
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Allow page breaks inside large sections, only avoid on small items */
+    .print-break-avoid {
+        break-inside: avoid;
+    }
+
+    /* Disable animations for print */
+    * {
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+    }
 }
