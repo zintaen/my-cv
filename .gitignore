@@ -8,3 +8,5 @@ coverage/
 !.env.example
 *.tsbuildinfo
 .simple-git-hooks.json
+.agent
+public/Stephen_Cheng_CV.pdf
