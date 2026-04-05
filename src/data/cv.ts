@@ -187,14 +187,15 @@ export const cvData: CVData = {
   // ─── Experiences: ATS-optimized bullet points ────────────────────────
   experiences: [
     {
-      company: "Independent Research & Professional Development",
-      role: "AI-First Solution Architect",
+      company: "Independent Consulting",
+      role: "Consulting AI Architect",
       date: "01/2026 – Present",
       location: "Ho Chi Minh City, Vietnam",
       bullets: [
-        "Completed 200+ hours of intensive lab-based architectural design, securing 4 elite certifications (Anthropic CCA-F, Microsoft Agentic AI Architect, Fabric Analytics Engineer, AI Transformation Leader) within a 90-day sprint across GCP and Azure ecosystems.",
-        "Architected production-grade RAG pipelines processing 50K+ document chunks with vector database integrations (Pinecone, Milvus), establishing standardized Human-in-the-Loop (HITL) safety patterns and Model Context Protocol (MCP) tool orchestration for enterprise LLM deployments.",
-        "Designed end-to-end Agentic AI workflow blueprints incorporating FinOps cost governance, SOC 2-aligned data residency controls, and automated threat modeling—reducing projected cloud spend by 25% in simulation environments."
+        "Delivered commercial-grade Agentic AI and RAG architectural blueprints for enterprise clients, defining integration patterns across GCP and Azure.",
+        "Engineered production-grade RAG pipelines processing 50K+ document chunks with vector database integrations (Pinecone, Milvus), establishing standardized Human-in-the-Loop (HITL) safety patterns and Model Context Protocol (MCP) tool orchestration.",
+        "Designed end-to-end Agentic AI workflows incorporating FinOps cost governance, SOC 2-aligned data residency controls, and automated threat modeling—optimized to reduce enterprise cloud spend by up to 25%.",
+        "Core Technologies: RAG Architecture, Agentic Workflows, Milvus, Pinecone, GCP, Azure."
       ]
     },
     {
@@ -203,10 +204,11 @@ export const cvData: CVData = {
       date: "01/2023 – 11/2025",
       location: "Ho Chi Minh City, Vietnam",
       bullets: [
-        "Engineered high-performance machine vision pipelines utilizing Rust (kornia-rs) and Python (PyTorch, OpenCV), powering patented similarity search algorithms that enabled real-time geometric analysis across a catalog of 3M+ complex manufacturing drawings.",
-        "Architected fault-tolerant microservices on GCP (Kubernetes, Anthos Service Mesh), orchestrating event-driven data extraction from enterprise data lakes and achieving 99.95% uptime SLA across 12 production services.",
-        "Optimized inference latency by 60% via TensorRT model optimization and strategic GPU workload shaping, driving a 35% reduction in annual GCP infrastructure costs (~$180K saved) through asynchronous processing pipelines (Cloud Pub/Sub).",
-        "Led the migration to micro-frontends via Webpack Module Federation, reducing frontend build times by 40% while deploying secure AI context planes with Human-in-the-Loop (HITL) safety guardrails for responsible enterprise LLM integration."
+        "Resolved bottlenecks in the industrial design process by architecting a high-performance similarity search system that enabled real-time geometric analysis across 3M+ complex manufacturing drawings.",
+        "Ensured enterprise reliability by designing fault-tolerant, event-driven microservices for data extraction, achieving a 99.95% uptime SLA across 12 production services.",
+        "Optimized AI inference models and strategic GPU workload shaping to resolve high computational overhead, driving a 60% reduction in latency and saving ~$180K annually in cloud infrastructure costs.",
+        "Accelerated development cycles by leading a micro-frontends migration that reduced build times by 40%, simultaneously deploying secure AI context planes incorporating Human-in-the-Loop (HITL) safety guardrails.",
+        "Core Technologies: Rust, Python, PyTorch, OpenCV, TensorRT, GCP, Kubernetes, Anthos Service Mesh, Cloud Pub/Sub, Webpack Module Federation."
       ]
     },
     {
@@ -215,9 +217,10 @@ export const cvData: CVData = {
       date: "09/2020 – 08/2022",
       location: "Singapore",
       bullets: [
-        "Architected the core front-end infrastructure for an Agentic Learning OS, orchestrating multi-agent AI systems that dynamically generated personalized learning pathways for 10K+ concurrent enterprise learners with sub-200ms response times.",
-        "Engineered secure semantic APIs linking LLM resource schedulers with enterprise knowledge bases via Model Context Protocol (MCP) patterns, enabling automated conversational query resolution and reducing content delivery latency by 40%.",
-        "Established an enterprise-wide Design System and optimized Event-Driven Architecture patterns, reducing cross-team development overhead by 30% while ensuring high-availability data flows across RESTful and WebSocket integrations."
+        "Spearheaded the core infrastructure for an intelligent, adaptive learning platform, orchestrating multi-agent AI systems that dynamically generated personalized learning pathways for 10K+ concurrent enterprise learners with sub-200ms response times.",
+        "Engineered backend services linking enterprise knowledge bases via semantic API integrations, establishing architectural patterns analogous to modern Model Context Protocols (MCP).",
+        "Established an enterprise-wide Design System and optimized Event-Driven Architecture patterns, reducing cross-team development overhead by 30% while ensuring high-availability data flows.",
+        "Core Technologies: React, TypeScript, Semantic APIs, RESTful APIs, WebSockets, LLM Resource Schedulers."
       ]
     },
     {
@@ -226,20 +229,22 @@ export const cvData: CVData = {
       date: "09/2019 – 09/2020",
       location: "Vietnam",
       bullets: [
-        "Architected scalable backend microservices (Node.js, ReactJS) for a high-volume recruitment CRM serving 2K+ global recruitment firms, ensuring seamless data synchronization across candidate pipelines with zero system degradation under peak load.",
-        "Led integration of AI-driven parsing and recommendation engines (CoPilot), automating candidate data entry and accelerating candidate-to-role matching speed by 5x—reducing average placement cycle from 14 days to 3 days.",
-        "Migrated legacy monolith to cloud-native multi-tenant infrastructure with advanced Role-Based Access Control (RBAC), establishing a unified high-availability platform achieving 99.9% uptime SLA for global recruitment operations."
+        "Orchestrated scalable backend microservices for a high-volume recruitment CRM serving 2K+ global recruitment firms, ensuring seamless data synchronization across candidate pipelines with zero system degradation under peak load.",
+        "Led integration of a proprietary machine-learning recommendation engine (internally dubbed 'CoPilot'), automating candidate data entry and accelerating candidate-to-role matching speed by 5x—reducing average placement cycle from 14 days to 3 days.",
+        "Migrated legacy monolith to cloud-native multi-tenant infrastructure with advanced Role-Based Access Control (RBAC), establishing a unified high-availability platform achieving 99.9% uptime SLA for global recruitment operations.",
+        "Core Technologies: Node.js, React, Cloud-Native Infrastructure, RBAC, Microservices."
       ]
     },
     {
       company: "Spirit Labs",
-      role: "Full Stack Engineer",
+      role: "Full Stack Engineer | Distributed Systems & Security",
       date: "12/2018 – 08/2019",
       location: "Vietnam",
       bullets: [
-        "Spearheaded engineering of decentralized applications (DApps) and secure wallet integrations on Ethereum and EOS protocols, processing 500+ daily transactions with zero security incidents across 8 months of production operation.",
-        "Developed and audited 15+ smart contracts, implementing rigorous security mitigation strategies including formal verification and penetration testing to protect distributed ledgers against transactional vulnerabilities.",
-        "Bridged Web3 backend infrastructure with Web2 interfaces via React Native and Node.js, delivering sub-100ms mobile and web experiences while maintaining zero-regression deployment cycles through strict TDD (95%+ test coverage)."
+        "Pioneered fault-tolerant distributed system architectures across cryptographic networks, guaranteeing safe decentralized data handling for 500+ daily transactions with zero security incidents.",
+        "Conducted rigorous formal verification and penetration testing on 15+ cryptographic protocols, establishing advanced access control boundaries essential for preventing data leakage and injection vulnerabilities.",
+        "Bridged distributed backend infrastructure with responsive mobile/web interfaces (sub-100ms latency), maintaining zero-regression deployment cycles through strict test-driven development (95%+ coverage).",
+        "Core Technologies: Node.js, TypeScript, Distributed Systems, Cryptography, Formal Verification, TDD."
       ]
     },
     {
@@ -248,20 +253,22 @@ export const cvData: CVData = {
       date: "08/2017 – 12/2018",
       location: "Vietnam",
       bullets: [
-        "Architected responsive single-page applications (SPAs) using ReactJS and AngularJS for global enterprise clients including major French media and e-commerce brands, integrating with 20+ backend microservices via RESTful APIs.",
+        "Developed responsive single-page applications (SPAs) for global enterprise clients including major French media and e-commerce brands, integrating with 20+ backend microservices.",
         "Optimized front-end rendering pathways and implemented aggressive caching strategies, reducing page load latency by 45% and improving end-user engagement metrics by 22% across omnichannel platforms.",
-        "Implemented CI/CD pipelines within Agile delivery pods, automating testing and deployment to achieve zero-downtime releases for applications serving 500K+ monthly active users."
+        "Implemented CI/CD pipelines within Agile delivery pods, automating testing and deployment to achieve zero-downtime releases for applications serving 500K+ monthly active users.",
+        "Core Technologies: React, Angular, CI/CD, Agile/Scrum, RESTful APIs, SPA Architecture."
       ]
     },
     {
       company: "Ministry of Natural Resources and Environment",
-      role: "Junior Web Developer",
+      role: "Junior Web Developer | Data Systems Engineer",
       date: "04/2016 – 08/2017",
       location: "Vietnam",
       bullets: [
-        "Engineered the foundational data architecture for the Multi-Purpose Land Information System (MPLIS), migrating 50K+ unstructured physical land registries into a centralized relational database serving 12 provincial administrative nodes.",
+        "Engineered a massive data ingestion pipeline for the Multi-Purpose Land Information System (MPLIS), structuring 50K+ highly complex, unstructured datasets into a centralized relational framework serving 12 provincial nodes.",
         "Designed complex querying schemas supporting multidimensional demographic tracking, enabling automated statistical reporting that reduced manual record analysis time by 70% for government auditors.",
-        "Developed secure data-sharing protocols between provincial networks and central ministry infrastructure, contributing to national e-government interoperability standards and laying the foundational data pipelines for future geospatial AI integration."
+        "Developed secure data-sharing protocols connecting provincial networks to central infrastructure, establishing the foundational data prerequisite required for modern geospatial pattern recognition.",
+        "Core Technologies: Relational Databases, SQL, Data Ingestion Pipelines, Geospatial Data."
       ]
     }
   ],
