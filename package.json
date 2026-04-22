@@ -1,57 +1,34 @@
 {
     "name": "my-cv",
     "type": "module",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "private": true,
+    "description": "Stephen Cheng — ATS-optimized CV. Single-source React/Vite site + native A4 tagged-PDF export.",
     "scripts": {
-        "dev": "run-s ready start:dev",
-        "start:dev": "dotenvx run -- vite",
-        "build": "dotenvx run -- vite build",
-        "inspect": "cyberskill inspect",
-        "lint": "cyberskill lint",
-        "lint:fix": "cyberskill lint:fix",
-        "lint:inspect": "cyberskill lint:inspect",
-        "ready": "cyberskill ready",
-        "reset": "cyberskill reset",
-        "pdf": "node scripts/generate-pdf.mjs",
-        "test:e2e": "vitest --config src/shared/vitest/vitest.config.e2e.ts",
-        "test:unit": "vitest --config src/shared/vitest/vitest.config.unit.ts"
+        "dev": "vite",
+        "build": "tsc --noEmit && vite build",
+        "preview": "vite preview",
+        "pdf": "node scripts/build-pdf.mjs"
     },
     "dependencies": {
-        "@cyberskill/shared": "3.18.0",
-        "@tailwindcss/vite": "4.2.2",
-        "@vitejs/plugin-react": "6.0.1",
-        "envalid": "8.1.1",
-        "lucide-react": "1.7.0",
-        "react": "19.2.4",
-        "react-dom": "19.2.4"
+        "lucide-react": "1.8.0",
+        "react": "19.2.5",
+        "react-dom": "19.2.5"
     },
     "devDependencies": {
-        "@commitlint/cli": "20.5.0",
-        "@commitlint/config-conventional": "20.5.0",
-        "@dotenvx/dotenvx": "1.59.1",
-        "@eslint/config-inspector": "1.5.0",
-        "@testing-library/jest-dom": "6.9.1",
-        "@testing-library/react": "16.3.2",
-        "@types/node": "25.5.2",
+        "@tailwindcss/vite": "4.2.3",
+        "@types/node": "25.6.0",
         "@types/react": "19.2.14",
         "@types/react-dom": "19.2.3",
-        "@vitest/browser-playwright": "4.1.2",
-        "autoprefixer": "10.4.27",
-        "eslint": "10.2.0",
-        "jsdom": "29.0.1",
-        "lint-staged": "16.4.0",
-        "node-modules-inspector": "1.4.2",
-        "npm-run-all2": "8.0.4",
+        "@vitejs/plugin-react": "6.0.1",
         "pdf-lib": "1.17.1",
-        "puppeteer": "24.40.0",
-        "simple-git-hooks": "2.13.1",
-        "tailwindcss": "4.2.2",
-        "typescript": "6.0.2",
-        "vite": "8.0.3",
-        "vite-plugin-svgr": "5.2.0",
-        "vite-tsconfig-paths": "6.1.1",
-        "vitest": "4.1.2",
-        "vitest-browser-react": "2.2.0"
+        "puppeteer": "24.42.0",
+        "tailwindcss": "4.2.3",
+        "typescript": "6.0.3",
+        "vite": "8.0.9",
+        "vite-plugin-svgr": "5.2.0"
+    },
+    "engines": {
+        "node": ">=20"
     }
 }

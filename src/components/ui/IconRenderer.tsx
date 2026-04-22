@@ -1,5 +1,3 @@
-import type { ElementType } from 'react';
-
 import {
     Activity,
     BarChart3,
@@ -25,7 +23,7 @@ import {
 
 import type { AppIcon } from '../../data/cv';
 
-const LUCIDE_ICONS: Record<string, ElementType> = {
+const LUCIDE_REGISTRY = {
     Activity,
     BarChart3,
     Braces,
@@ -46,28 +44,22 @@ const LUCIDE_ICONS: Record<string, ElementType> = {
     SquareTerminal,
     TestTube,
     Users,
-};
+} as const;
 
-interface IconRendererProps {
-    icon: AppIcon;
-    className?: string;
-}
-
-export function IconRenderer({ icon, className = '' }: IconRendererProps) {
+/**
+ * Pure decorative icon. Always marked aria-hidden so screen readers AND
+ * ATS parsers skip it — the textual label is always provided separately.
+ */
+export function IconRenderer({ icon, className = '' }: { icon: AppIcon; className?: string }) {
     if (icon.type === 'lucide') {
-        const IconComponent = LUCIDE_ICONS[icon.name];
-        if (!IconComponent)
-            return null;
-        return <IconComponent className={className} />;
-    }
-
-    if (icon.type === 'url') {
-        return <img src={icon.path} alt="icon" className={`object-contain ${className}`} />;
+        const Cmp = LUCIDE_REGISTRY[icon.name as keyof typeof LUCIDE_REGISTRY];
+        if (!Cmp) return null;
+        return <Cmp aria-hidden="true" className={className} />;
     }
 
     if (icon.type === 'svg') {
-        const SvgComponent = icon.component;
-        return <SvgComponent className={className} />;
+        const Cmp = icon.component;
+        return <Cmp aria-hidden="true" className={className} />;
     }
 
     return null;

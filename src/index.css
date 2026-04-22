@@ -1,56 +1,95 @@
 @import 'tailwindcss';
 
+/* ──────────────────────────────────────────────────────────────────────
+ *  Design tokens
+ *  Kept identical to the original palette so the PDF is pixel-preserved.
+ * ────────────────────────────────────────────────────────────────────── */
 @theme {
-    --font-sans: 'Inter', system-ui, sans-serif;
-    --font-serif: 'Manrope', system-ui, sans-serif;
-    --font-mono: 'Space Grotesk', monospace;
+    --font-sans:  'Inter', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Manrope', 'Inter', system-ui, sans-serif;
+    --font-mono:  'Space Grotesk', ui-monospace, monospace;
 
-    --color-surface: #131313;
-    --color-surface-container-low: #1c1b1b;
-    --color-surface-container: #201f1f;
-    --color-surface-bright: #393939;
-    --color-surface-highest: #2a2a2a;
+    --color-surface:                 #131313;
+    --color-surface-container-low:   #1c1b1b;
+    --color-surface-container:       #201f1f;
+    --color-surface-bright:          #393939;
+    --color-surface-highest:         #2a2a2a;
 
-    --color-primary: #f2ca50;
-    --color-primary-container: #d4af37;
-    --color-surface-tint: #e9c349;
+    --color-primary:            #f2ca50;
+    --color-primary-container:  #d4af37;
+    --color-surface-tint:       #e9c349;
 
-    --color-on-surface: #e5e2e1;
-    --color-on-surface-variant: #d0c5af;
-    --color-outline-variant: rgba(255, 255, 255, 0.15);
+    --color-on-surface:          #e5e2e1;
+    --color-on-surface-variant:  #d0c5af;
+    --color-outline-variant:     rgba(255, 255, 255, 0.15);
 }
 
+html,
 body {
     background-color: var(--color-surface);
     color: var(--color-on-surface);
     font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ──────────────────────────────────────────────────────────────────────
+ *  ATS helper — visually-hidden but selectable/readable by text extractors.
+ *  Do NOT use `display: none` (parsers skip that). Do NOT use visibility.
+ *  This follows the accessibility best-practice pattern.
+ * ────────────────────────────────────────────────────────────────────── */
+.sr-only {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ──────────────────────────────────────────────────────────────────────
+ *  PDF-specific mode — triggered when `html.pdf` class is set by puppeteer.
+ *  The layout is designed natively at A4 (794px @96dpi), so no zoom hack.
+ * ────────────────────────────────────────────────────────────────────── */
+html.pdf,
+html.pdf body {
+    background-color: var(--color-surface);
+}
+
+html.pdf *,
+html.pdf *::before,
+html.pdf *::after {
+    transition: none !important;
+    animation: none !important;
+}
+
+html.pdf .print-hidden {
+    display: none !important;
+}
+
+/* Avoid breaking mid-item when paginating */
+html.pdf .avoid-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+/* ──────────────────────────────────────────────────────────────────────
+ *  Print media — backup for direct browser print.
+ * ────────────────────────────────────────────────────────────────────── */
+@page {
+    size: A4;
+    margin: 0;
 }
 
 @media print {
-    @page {
-        size: A4;
-        margin: 8mm 0;
-    }
-
     body {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
-        background-color: var(--color-surface);
     }
-
-    ::-webkit-scrollbar {
-        display: none;
-    }
-
-    /* Allow page breaks inside large sections, only avoid on small items */
-    .print-break-avoid {
-        break-inside: avoid;
-    }
-
-    /* Disable animations for print */
-    * {
-        transition: none !important;
-        animation: none !important;
-        transform: none !important;
+    .print-hidden {
+        display: none !important;
     }
 }

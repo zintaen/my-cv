@@ -1,12 +1,10 @@
 node_modules/
-build/
 dist/
+build/
 coverage/
 .DS_Store
 *.log
-.env*
-!.env.example
 *.tsbuildinfo
-.simple-git-hooks.json
-.agent
-public/Stephen_Cheng_CV.pdf
+.env
+.env.local
+.vite/

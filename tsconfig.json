@@ -1,24 +1,27 @@
 {
-    "extends": "./node_modules/@cyberskill/shared/public/tsconfig.base.json",
     "compilerOptions": {
-        "ignoreDeprecations": "6.0",
-        "incremental": true,
-        "jsx": "react-jsx",
-        "baseUrl": ".",
+        "target": "ES2022",
+        "lib": ["ES2022", "DOM", "DOM.Iterable"],
         "module": "ESNext",
         "moduleResolution": "bundler",
+        "jsx": "react-jsx",
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "skipLibCheck": true,
+        "useDefineForClassFields": true,
+        "noEmit": true,
+        "types": ["vite/client", "vite-plugin-svgr/client"],
+        "baseUrl": ".",
         "paths": {
-            "#public/*": [
-                "public/*"
-            ],
-            "#shared/*": [
-                "./src/shared/*"
-            ]
-        },
-        "noEmit": true
+            "~/*": ["./src/*"]
+        }
     },
-    "include": [
-        "**/*.ts",
-        "**/*.tsx"
-    ]
+    "include": ["src/**/*.ts", "src/**/*.tsx"]
 }
