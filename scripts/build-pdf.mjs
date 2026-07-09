@@ -51,7 +51,7 @@ const ROOT = resolve(__dirname, '..');
 
 const OUTPUT = resolve(
     ROOT,
-    process.argv[2] || 'public/Stephen_Cheng_CV.pdf',
+    process.argv[2] || 'dist/Stephen_Cheng_CV.pdf',
 );
 const PORT = Number(process.env.PDF_PORT || 4173);
 const URL = `http://127.0.0.1:${PORT}/`;
@@ -258,19 +258,20 @@ async function renderPdf() {
             '/usr/bin/chromium-browser',
             '/usr/bin/google-chrome',
         ].filter(Boolean);
-        const execPath = fallbackChromes.find((p) => fs.existsSync(p));
+        const execPath = fallbackChromes.find((p) => fs.existsSync(p)) || undefined;
         if (execPath) console.log(`   using chromium at ${execPath}`);
 
-        const browser = await puppeteer.launch({
+        const launchOpts = {
             headless: true,
-            executablePath: execPath,
             args: [
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
                 '--disable-dev-shm-usage',
                 '--font-render-hinting=medium',
             ],
-        });
+        };
+        if (execPath) launchOpts.executablePath = execPath;
+        const browser = await puppeteer.launch(launchOpts);
 
         const page = await browser.newPage();
 
@@ -283,6 +284,7 @@ async function renderPdf() {
         await page.emulateMediaType('screen');
 
         console.log(`📄 Navigating to ${URL}…`);
+
         await page.goto(URL, { waitUntil: 'networkidle0', timeout: 45_000 });
 
         // Tag <html> so our `html.pdf` CSS applies.
@@ -307,11 +309,18 @@ async function renderPdf() {
         });
 
         // Small settle — layout reflow after CSS injection + fonts.
-        await new Promise((r) => setTimeout(r, 500));
+        await new Promise((r) => setTimeout(r, 1500));
+
+        // Verify the page actually rendered content.
+        const bodyLen = await page.evaluate(() => document.body?.innerText?.length || 0);
+        if (bodyLen < 100) {
+            throw new Error(`Page appears blank (only ${bodyLen} chars). Check Vite server output.`);
+        }
 
         console.log('🖨️  Emitting tagged A4 PDF…');
-        const buffer = await page.pdf({
-            path: undefined,
+        const tmpPath = resolve(ROOT, '.tmp-cv.pdf');
+        await page.pdf({
+            path: tmpPath,
             format: 'A4',
             printBackground: true,
             preferCSSPageSize: false,
@@ -319,34 +328,33 @@ async function renderPdf() {
             outline: false,
             margin: { top: '0', bottom: '0', left: '0', right: '0' },
         });
+        const buffer = fs.readFileSync(tmpPath);
+        fs.unlinkSync(tmpPath);
+        console.log(`📦 Raw PDF buffer: ${Math.round(buffer.length / 1024)} KB`);
 
         await browser.close();
 
         // ─── Post-process: embed ATS-relevant metadata ───────────────────
         console.log('🔧 Embedding metadata via pdf-lib…');
         const pdfDoc = await PDFDocument.load(buffer);
-        pdfDoc.setTitle('Stephen Cheng — AI-First Solution Architect');
+        pdfDoc.setTitle('Stephen Cheng — Senior Dynamics 365 Business Central & AL Developer');
         pdfDoc.setAuthor('Stephen Cheng');
         pdfDoc.setSubject(
-            'Curriculum Vitae — 10+ years architecting Agentic AI, RAG pipelines, and fault-tolerant cloud systems on GCP and AWS.',
+            'Curriculum Vitae — 10+ years building enterprise ERP systems, specializing in Dynamics 365 Business Central, AL programming, and Microsoft Power Platform integrations.',
         );
         pdfDoc.setKeywords([
-            'AI Solution Architect',
-            'Agentic AI',
-            'RAG',
-            'LangChain',
-            'LlamaIndex',
-            'GCP',
-            'AWS',
-            'Kubernetes',
-            'React',
+            'Senior Dynamics 365 Business Central Developer',
+            'AL Language',
+            'Dynamics NAV',
+            'C/AL',
+            'Microsoft Power Platform',
+            'Azure Cloud',
+            'OData',
+            'REST APIs',
+            'ERP Implementation',
+            'SQL Server',
             'TypeScript',
-            'Node.js',
-            'Python',
-            'PyTorch',
-            'MLOps',
-            'Microservices',
-            'Event-Driven Architecture',
+            'System Architecture',
         ]);
         pdfDoc.setProducer('build-pdf.mjs (puppeteer + pdf-lib)');
         pdfDoc.setCreator('Stephen Cheng CV Pipeline v2');
@@ -355,9 +363,6 @@ async function renderPdf() {
         const out = await pdfDoc.save({ useObjectStreams: true });
         fs.mkdirSync(dirname(OUTPUT), { recursive: true });
         fs.writeFileSync(OUTPUT, out);
-
-        // Keep a copy at the repo root as well (matches the original project layout).
-        fs.writeFileSync(resolve(ROOT, 'Stephen_Cheng_CV.pdf'), out);
 
         const sizeKb = Math.round(out.length / 1024);
         console.log(`✅ PDF ready → ${OUTPUT} (${sizeKb} KB)`);

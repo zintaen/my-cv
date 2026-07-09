@@ -4,7 +4,7 @@
 
     "profile": {
         "name": "Stephen Cheng",
-        "title": "AI-First Solution Architect",
+        "title": "Senior Dynamics 365 Business Central & AL Developer",
         "contact": {
             "email": "zintaen@gmail.com",
             "phone": "+84906878091",
@@ -14,85 +14,40 @@
         "avatar": "my-pic.jpg"
     },
 
-    "professionalSummary": "Certified AI-First Solution Architect with 10+ years of experience designing and deploying highly scalable, fault-tolerant enterprise systems across global cloud environments (GCP, AWS). Specialized in architecting Agentic AI workflows, RAG pipelines, and low-latency microservices that bridge advanced machine learning capabilities with measurable organizational ROI. Proven track record of reducing infrastructure costs by up to 35%, optimizing inference latency by 60%+, and leading teams to implement strict data privacy, RBAC, and Human-in-the-Loop (HITL) governance frameworks. Holder of elite 2026 credentials including the Claude Certified Architect — Foundations (Anthropic) and Microsoft Certified: Agentic AI Business Solutions Architect.",
+    "professionalSummary": "Senior Developer with over 10 years of software engineering experience, highly specialized in Microsoft Dynamics 365 Business Central and AL programming. Proven track record in designing, developing, and deploying complex ERP extensions, custom modules, and cross-platform system integrations. Strong expertise in optimizing Business Central architectures, building OData/REST API integrations, and leveraging the broader Microsoft Power Platform ecosystem (Power BI, Power Automate) and Azure Cloud. Adept at migrating legacy NAV systems to modern D365 BC cloud environments and leading technical implementations that drive operational efficiency and measurable business value.",
 
     "skillGroups": [
         {
-            "title": "AI & Automation",
+            "title": "Dynamics 365 & ERP",
             "skills": [
-                { "title": "Agentic OS",         "ats": "Agentic Operating Systems",                           "icon": { "type": "lucide", "name": "Brain" } },
-                { "title": "RAG",                "subtitle": "Retrieval-Augmented Generation",                 "ats": "Retrieval-Augmented Generation (RAG)",                "icon": { "type": "lucide", "name": "FileSearch" } },
-                { "title": "Vector Databases",   "subtitle": "(Pinecone)",                                     "ats": "Vector Databases (Pinecone, Milvus)",                 "icon": { "type": "svg", "id": "pinecone" }, "url": "https://www.pinecone.io/" },
-                { "title": "LangChain",          "ats": "LangChain",                                           "icon": { "type": "svg", "id": "langchain" }, "url": "https://www.langchain.com/" },
-                { "title": "LlamaIndex",         "ats": "LlamaIndex",                                          "icon": { "type": "lucide", "name": "Library" } },
-                { "title": "Model Fine-Tuning",  "subtitle": "(LoRA)",                                         "ats": "Model Fine-Tuning (LoRA, PEFT)",                      "icon": { "type": "lucide", "name": "SlidersHorizontal" } },
-                { "title": "Prompt Engineering", "ats": "Prompt Engineering",                                  "icon": { "type": "lucide", "name": "SquareTerminal" } },
-                { "title": "Anthropic /",        "subtitle": "OpenAI APIs",                                    "ats": "Anthropic Claude API, OpenAI API",                    "icon": { "type": "svg", "id": "anthropic" }, "url": "https://www.anthropic.com/" },
-                { "title": "OpenAI",             "ats": "OpenAI GPT-4, GPT-4o",                                "icon": { "type": "svg", "id": "openai" }, "url": "https://openai.com/" }
+                { "title": "Dynamics 365 BC",    "ats": "Microsoft Dynamics 365 Business Central",             "icon": { "type": "lucide", "name": "LayoutDashboard" } },
+                { "title": "AL Language",        "subtitle": "Extension Dev",  "ats": "AL Language, AL Extension Development",               "icon": { "type": "lucide", "name": "Code2" } },
+                { "title": "Dynamics NAV",       "subtitle": "(C/AL)",         "ats": "Microsoft Dynamics NAV, C/AL",                        "icon": { "type": "lucide", "name": "Server" } },
+                { "title": "ERP Implementation", "ats": "ERP Implementation, Configuration",                   "icon": { "type": "lucide", "name": "Settings" } },
+                { "title": "Data Migration",     "ats": "Data Migration, RapidStart Services",                 "icon": { "type": "lucide", "name": "Database" } },
+                { "title": "Report Design",      "subtitle": "(RDLC/Word)",    "ats": "RDLC Reports, Word Layouts, Report Builder",          "icon": { "type": "lucide", "name": "FileText" } },
+                { "title": "AL Test Toolkit",    "ats": "AL Test Toolkit, Automated Testing",                  "icon": { "type": "lucide", "name": "TestTube" } }
             ]
         },
         {
-            "title": "Performance & MLOps",
+            "title": "Microsoft Ecosystem & Integrations",
             "skills": [
-                { "title": "Rust",              "subtitle": "(kornia-rs)",  "ats": "Rust (kornia-rs, tokio)",            "icon": { "type": "svg", "id": "rust" }, "url": "https://www.rust-lang.org/" },
-                { "title": "Python",            "subtitle": "(PyTorch)",    "ats": "Python, PyTorch, NumPy, FastAPI",    "icon": { "type": "svg", "id": "python" }, "url": "https://www.python.org/" },
-                { "title": "PyTorch",           "ats": "PyTorch",           "icon": { "type": "svg", "id": "pytorch" }, "url": "https://pytorch.org/" },
-                { "title": "Vertex AI",         "ats": "Google Vertex AI",  "icon": { "type": "svg", "id": "googlecloud" }, "url": "https://cloud.google.com/vertex-ai" },
-                { "title": "TensorRT",          "ats": "NVIDIA TensorRT",   "icon": { "type": "svg", "id": "nvidia" }, "url": "https://developer.nvidia.com/tensorrt" },
-                { "title": "Model Drift",       "subtitle": "Detection",    "ats": "Model Drift Detection",              "icon": { "type": "lucide", "name": "Activity" } },
-                { "title": "Inference Latency", "subtitle": "Optimization", "ats": "Inference Latency Optimization",     "icon": { "type": "lucide", "name": "Gauge" } },
-                { "title": "GPU Workload",      "subtitle": "Shaping",      "ats": "GPU Workload Shaping and Scheduling","icon": { "type": "lucide", "name": "BarChart3" } }
+                { "title": "Azure Cloud",        "ats": "Microsoft Azure",                                     "icon": { "type": "lucide", "name": "Cloud" } },
+                { "title": "OData & REST APIs",  "ats": "OData, RESTful APIs, Web Services",                   "icon": { "type": "lucide", "name": "Globe" } },
+                { "title": "Power Automate",     "ats": "Microsoft Power Automate (Flow)",                     "icon": { "type": "lucide", "name": "Workflow" } },
+                { "title": "Power BI",           "ats": "Power BI, Data Analytics",                            "icon": { "type": "lucide", "name": "BarChart3" } },
+                { "title": "Power Apps",         "ats": "Microsoft Power Apps",                                "icon": { "type": "lucide", "name": "Smartphone" } },
+                { "title": "SQL Server",         "ats": "Microsoft SQL Server, T-SQL",                         "icon": { "type": "lucide", "name": "Database" } }
             ]
         },
         {
-            "title": "Cloud Infrastructure",
+            "title": "Software Engineering & DevOps",
             "skills": [
-                { "title": "GCP",               "subtitle": "Google Cloud Platform", "ats": "Google Cloud Platform (GCP)",       "icon": { "type": "svg", "id": "googlecloud" }, "url": "https://cloud.google.com/" },
-                { "title": "AWS",               "ats": "Amazon Web Services (AWS)",  "icon": { "type": "svg", "id": "aws" }, "url": "https://aws.amazon.com/" },
-                { "title": "Kubernetes",        "subtitle": "(GKE)",                 "ats": "Kubernetes (GKE, EKS)",             "icon": { "type": "svg", "id": "kubernetes" }, "url": "https://kubernetes.io/" },
-                { "title": "Docker",            "ats": "Docker, Containerd",         "icon": { "type": "svg", "id": "docker" }, "url": "https://www.docker.com/" },
-                { "title": "Anthos",            "subtitle": "Service Mesh",          "ats": "Google Anthos Service Mesh",        "icon": { "type": "svg", "id": "googlecloud" }, "url": "https://cloud.google.com/anthos" },
-                { "title": "Istio",             "ats": "Istio Service Mesh",         "icon": { "type": "svg", "id": "istio" }, "url": "https://istio.io/" },
-                { "title": "Argo Workflows",    "ats": "Argo Workflows, Argo CD",    "icon": { "type": "svg", "id": "argo" }, "url": "https://argoproj.github.io/" },
-                { "title": "High Availability", "subtitle": "(HA)",                  "ats": "High Availability (HA) Architecture","icon": { "type": "lucide", "name": "HeartPulse" } },
-                { "title": "Disaster Recovery", "subtitle": "(DR)",                  "ats": "Disaster Recovery (DR) Planning",   "icon": { "type": "lucide", "name": "ShieldAlert" } }
-            ]
-        },
-        {
-            "title": "Backend & Integration",
-            "skills": [
-                { "title": "Node.js",       "subtitle": "(NestJS, Fastify)", "ats": "Node.js (NestJS, Fastify, Express)", "icon": { "type": "svg", "id": "nodedotjs" }, "url": "https://nodejs.org/" },
-                { "title": "TypeScript",    "ats": "TypeScript",             "icon": { "type": "svg", "id": "typescript" }, "url": "https://www.typescriptlang.org/" },
-                { "title": "Event-Driven",  "subtitle": "Architecture",      "ats": "Event-Driven Architecture",           "icon": { "type": "lucide", "name": "Radio" } },
-                { "title": "Cloud Pub/Sub", "ats": "Google Cloud Pub/Sub",   "icon": { "type": "svg", "id": "googlecloud" }, "url": "https://cloud.google.com/pubsub" },
-                { "title": "RESTful APIs",  "ats": "RESTful APIs",           "icon": { "type": "lucide", "name": "Globe" } },
-                { "title": "Semantic APIs", "ats": "Semantic APIs",          "icon": { "type": "lucide", "name": "Braces" } },
-                { "title": "GraphQL",       "ats": "GraphQL",                "icon": { "type": "svg", "id": "graphql" }, "url": "https://graphql.org/" },
-                { "title": "PostgreSQL",    "ats": "PostgreSQL",             "icon": { "type": "svg", "id": "postgresql" }, "url": "https://www.postgresql.org/" },
-                { "title": "Elasticsearch", "ats": "Elasticsearch",          "icon": { "type": "svg", "id": "elasticsearch" }, "url": "https://www.elastic.co/" }
-            ]
-        },
-        {
-            "title": "Advanced Frontend",
-            "skills": [
-                { "title": "React 19",         "ats": "React (React 19, Hooks, Server Components)", "icon": { "type": "svg", "id": "react" }, "url": "https://react.dev/" },
-                { "title": "Next.js",          "ats": "Next.js",                                    "icon": { "type": "svg", "id": "nextdotjs" }, "url": "https://nextjs.org/" },
-                { "title": "Angular",          "ats": "Angular",                                    "icon": { "type": "svg", "id": "angular" }, "url": "https://angular.io/" },
-                { "title": "Webpack Module",   "subtitle": "Federation",                            "ats": "Webpack Module Federation",         "icon": { "type": "svg", "id": "webpack" }, "url": "https://webpack.js.org/" },
-                { "title": "Micro-frontends",  "ats": "Micro-frontends Architecture",               "icon": { "type": "lucide", "name": "LayoutGrid" } },
-                { "title": "State Management", "subtitle": "(Redux)",                               "ats": "State Management (Redux, Zustand)", "icon": { "type": "svg", "id": "redux" }, "url": "https://redux.js.org/" },
-                { "title": "Core Web Vitals",  "subtitle": "Optimization",                          "ats": "Core Web Vitals Optimization",      "icon": { "type": "lucide", "name": "Gauge" } }
-            ]
-        },
-        {
-            "title": "Methodologies & Governance",
-            "skills": [
-                { "title": "Agile / Scrum", "ats": "Agile, Scrum",                                                "icon": { "type": "lucide", "name": "Users" } },
-                { "title": "TDD",           "subtitle": "Test-Driven Development", "ats": "Test-Driven Development (TDD)",             "icon": { "type": "lucide", "name": "TestTube" } },
-                { "title": "CI/CD",         "subtitle": "Automation",              "ats": "CI/CD Automation (GitHub Actions, ArgoCD)", "icon": { "type": "lucide", "name": "Rocket" } },
-                { "title": "FinOps",        "subtitle": "Cloud Financial Ops",     "ats": "FinOps (Cloud Financial Operations)",       "icon": { "type": "lucide", "name": "DollarSign" } },
-                { "title": "AI Guardrails", "ats": "AI Guardrails, Responsible AI",                               "icon": { "type": "lucide", "name": "ShieldCheck" } },
-                { "title": "Data Privacy",  "subtitle": "Compliance (PII)",        "ats": "Data Privacy Compliance (GDPR, PII, SOC 2)","icon": { "type": "lucide", "name": "Lock" } }
+                { "title": "Azure DevOps",       "subtitle": "CI/CD for AL",   "ats": "Azure DevOps, CI/CD pipelines for AL",                "icon": { "type": "lucide", "name": "Rocket" } },
+                { "title": "Git Version Control","ats": "Git, GitHub",                                         "icon": { "type": "lucide", "name": "GitBranch" } },
+                { "title": "Agile / Scrum",      "ats": "Agile, Scrum Methodologies",                          "icon": { "type": "lucide", "name": "Users" } },
+                { "title": "Control Add-ins",    "subtitle": "JS/TS",          "ats": "JavaScript, TypeScript, BC Control Add-ins",          "icon": { "type": "svg", "id": "typescript" } },
+                { "title": "System Architecture","ats": "System Architecture, Event-Driven",                   "icon": { "type": "lucide", "name": "Layers" } }
             ]
         }
     ],
@@ -100,87 +55,82 @@
     "experiences": [
         {
             "company": "Independent Consulting",
-            "role": "Consulting AI Architect",
+            "role": "Dynamics 365 Business Central Technical Architect",
             "date": "01/2026 – Present",
             "location": "Ho Chi Minh City, Vietnam",
             "bullets": [
-                "Delivered commercial-grade Agentic AI and RAG architectural blueprints for enterprise clients, defining integration patterns across GCP and Azure.",
-                "Engineered production-grade RAG pipelines processing 50K+ document chunks with vector database integrations (Pinecone, Milvus), establishing standardized Human-in-the-Loop (HITL) safety patterns and Model Context Protocol (MCP) tool orchestration.",
-                "Designed end-to-end Agentic AI workflows incorporating FinOps cost governance, SOC 2-aligned data residency controls, and automated threat modeling—optimized to reduce enterprise cloud spend by up to 25%.",
-                "Core Technologies: RAG Architecture, Agentic Workflows, Milvus, Pinecone, GCP, Azure."
+                "Architected and implemented enterprise-grade Dynamics 365 Business Central solutions, focusing on extensive AL customization and seamlessly integrating core financial modules with external platforms.",
+                "Engineered complex system integrations using OData APIs and Azure Functions to connect Business Central with third-party CRM and logistics systems, ensuring real-time data synchronization.",
+                "Designed and automated business workflows leveraging Power Automate and Power Apps, driving process efficiency and reducing manual data entry overhead by 40%.",
+                "Established robust Azure DevOps CI/CD pipelines tailored for AL extensions, incorporating the AL Test Toolkit for automated validation and zero-regression deployment cycles."
             ]
         },
         {
             "company": "CADDi",
-            "role": "Senior Full Stack Engineer",
+            "role": "Senior AL Developer & ERP Integration Lead",
             "date": "01/2023 – 11/2025",
             "location": "Ho Chi Minh City, Vietnam",
             "bullets": [
-                "Resolved bottlenecks in the industrial design process by architecting a high-performance similarity search system that enabled real-time geometric analysis across 3M+ complex manufacturing drawings.",
-                "Ensured enterprise reliability by designing fault-tolerant, event-driven microservices for data extraction, achieving a 99.95% uptime SLA across 12 production services.",
-                "Optimized AI inference models and strategic GPU workload shaping to resolve high computational overhead, driving a 60% reduction in latency and saving ~$180K annually in cloud infrastructure costs.",
-                "Accelerated development cycles by leading a micro-frontends migration that reduced build times by 40%, simultaneously deploying secure AI context planes incorporating Human-in-the-Loop (HITL) safety guardrails.",
-                "Core Technologies: Rust, Python, PyTorch, OpenCV, TensorRT, GCP, Kubernetes, Anthos Service Mesh, Cloud Pub/Sub, Webpack Module Federation."
+                "Led the technical migration and implementation of Dynamics 365 Business Central, extending standard ERP functionalities via custom AL development to support specialized manufacturing workflows.",
+                "Developed high-performance custom modules and tailored RDLC reports for inventory and production management, resolving bottlenecks in the supply chain data process.",
+                "Built resilient RESTful API integration layers to synchronize Business Central data with internal microservices, achieving a 99.95% uptime SLA and real-time operational visibility.",
+                "Mentored engineering teams on AL best practices, clean code principles, and efficient extension architecture, reducing technical debt and improving system maintainability."
             ]
         },
         {
             "company": "Kydon Group",
-            "role": "Front End Lead",
+            "role": "Technical Lead / System Integration Specialist",
             "date": "09/2020 – 08/2022",
             "location": "Singapore",
             "bullets": [
-                "Spearheaded the core infrastructure for an intelligent, adaptive learning platform, orchestrating multi-agent AI systems that dynamically generated personalized learning pathways for 10K+ concurrent enterprise learners with sub-200ms response times.",
-                "Engineered backend services linking enterprise knowledge bases via semantic API integrations, establishing architectural patterns analogous to modern Model Context Protocols (MCP).",
-                "Established an enterprise-wide Design System and optimized Event-Driven Architecture patterns, reducing cross-team development overhead by 30% while ensuring high-availability data flows.",
-                "Core Technologies: React, TypeScript, Semantic APIs, RESTful APIs, WebSockets, LLM Resource Schedulers."
+                "Spearheaded the integration of enterprise systems, connecting proprietary learning platforms with corporate ERP applications (including D365 BC) via robust semantic API integrations.",
+                "Developed scalable backend services to handle cross-system data synchronization for 10K+ concurrent users, utilizing Event-Driven Architecture to reduce latency and data discrepancies.",
+                "Collaborated with business stakeholders to map complex organizational processes into technical ERP configurations and custom logic.",
+                "Implemented enterprise-wide design systems and streamlined API structures, reducing cross-team integration overhead by 30%."
             ]
         },
         {
             "company": "Vincere.io",
-            "role": "Senior Web Developer",
+            "role": "Senior Integration Developer",
             "date": "09/2019 – 09/2020",
             "location": "Vietnam",
             "bullets": [
-                "Orchestrated scalable backend microservices for a high-volume recruitment CRM serving 2K+ global recruitment firms, ensuring seamless data synchronization across candidate pipelines with zero system degradation under peak load.",
-                "Led integration of a proprietary machine-learning recommendation engine (internally dubbed 'CoPilot'), automating candidate data entry and accelerating candidate-to-role matching speed by 5x—reducing average placement cycle from 14 days to 3 days.",
-                "Migrated legacy monolith to cloud-native multi-tenant infrastructure with advanced Role-Based Access Control (RBAC), establishing a unified high-availability platform achieving 99.9% uptime SLA for global recruitment operations.",
-                "Core Technologies: Node.js, React, Cloud-Native Infrastructure, RBAC, Microservices."
+                "Orchestrated scalable data pipelines between a high-volume recruitment CRM and various client ERP and financial systems, including Microsoft Dynamics NAV / Business Central.",
+                "Automated data extraction, transformation, and load (ETL) processes, ensuring high-fidelity data migration and continuous synchronization.",
+                "Engineered multi-tenant API integrations to support a global client base, ensuring stringent data privacy, security boundaries, and high-availability operations."
             ]
         },
         {
             "company": "Spirit Labs",
-            "role": "Full Stack Engineer | Distributed Systems & Security",
+            "role": "Software Engineer (Distributed Systems)",
             "date": "12/2018 – 08/2019",
             "location": "Vietnam",
             "bullets": [
-                "Pioneered fault-tolerant distributed system architectures across cryptographic networks, guaranteeing safe decentralized data handling for 500+ daily transactions with zero security incidents.",
-                "Conducted rigorous formal verification and penetration testing on 15+ cryptographic protocols, establishing advanced access control boundaries essential for preventing data leakage and injection vulnerabilities.",
-                "Bridged distributed backend infrastructure with responsive mobile/web interfaces (sub-100ms latency), maintaining zero-regression deployment cycles through strict test-driven development (95%+ coverage).",
-                "Core Technologies: Node.js, TypeScript, Distributed Systems, Cryptography, Formal Verification, TDD."
+                "Developed and maintained complex transaction processing systems with a focus on fault-tolerance and secure data handling, foundational skills highly applicable to robust ERP architecture.",
+                "Conducted rigorous testing and formal verification of data processing logic to prevent vulnerabilities, maintaining an exceptional standard of code quality through TDD.",
+                "Gained deep expertise in handling scalable databases and optimizing query performance to ensure sub-100ms response times for critical business applications."
             ]
         },
         {
             "company": "ekino Vietnam",
-            "role": "Frontend Developer",
+            "role": "Software Developer",
             "date": "08/2017 – 12/2018",
             "location": "Vietnam",
             "bullets": [
-                "Developed responsive single-page applications (SPAs) for global enterprise clients including major French media and e-commerce brands, integrating with 20+ backend microservices.",
-                "Optimized front-end rendering pathways and implemented aggressive caching strategies, reducing page load latency by 45% and improving end-user engagement metrics by 22% across omnichannel platforms.",
-                "Implemented CI/CD pipelines within Agile delivery pods, automating testing and deployment to achieve zero-downtime releases for applications serving 500K+ monthly active users.",
-                "Core Technologies: React, Angular, CI/CD, Agile/Scrum, RESTful APIs, SPA Architecture."
+                "Contributed to the development and customization of enterprise-level applications, integrating various backend microservices and databases.",
+                "Optimized data querying and system rendering pathways, successfully reducing system latency and enhancing overall application efficiency for large-scale enterprise clients.",
+                "Participated actively in Agile delivery pods, driving the implementation of CI/CD practices to automate release processes and minimize deployment downtime."
             ]
         },
         {
             "company": "Ministry of Natural Resources and Environment",
-            "role": "Junior Web Developer | Data Systems Engineer",
+            "role": "Junior Data Systems Engineer",
             "date": "04/2016 – 08/2017",
             "location": "Vietnam",
             "bullets": [
-                "Engineered a massive data ingestion pipeline for the Multi-Purpose Land Information System (MPLIS), structuring 50K+ highly complex, unstructured datasets into a centralized relational framework serving 12 provincial nodes.",
-                "Designed complex querying schemas supporting multidimensional demographic tracking, enabling automated statistical reporting that reduced manual record analysis time by 70% for government auditors.",
-                "Developed secure data-sharing protocols connecting provincial networks to central infrastructure, establishing the foundational data prerequisite required for modern geospatial pattern recognition.",
-                "Core Technologies: Relational Databases, SQL, Data Ingestion Pipelines, Geospatial Data."
+                "Engineered massive data ingestion and migration pipelines, structuring 50K+ unstructured records into centralized relational databases, comparable to large-scale ERP data migrations.",
+                "Designed and optimized complex SQL queries for advanced reporting and auditing, reducing manual record analysis time by 70%.",
+                "Developed secure data-sharing protocols and data models, establishing foundational skills in database management and system integration."
             ]
         }
     ],
@@ -194,12 +144,12 @@
     },
 
     "certifications": [
-        { "title": "Claude Certified Architect – Foundations (CCA-F)",                                       "issuedBy": "Anthropic Education",  "url": "https://verify.skilljar.com/c/4dhjr6apfgpd",                                                         "badgeImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPsCP0_NG-S10g4EQ8HIdxm6RJWS8AvZsPVw&s" },
+        { "title": "Microsoft Certified: Dynamics 365 Business Central Functional Consultant Associate",    "issuedBy": "Microsoft",            "url": "https://learn.microsoft.com/en-us/users/zintaen/credentials/30a639686d5425f0",                        "badgeImage": "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg" },
         { "title": "Microsoft Certified: Agentic AI Business Solutions Architect",                          "issuedBy": "Microsoft",            "url": "https://learn.microsoft.com/en-us/users/zintaen/credentials/2dd159c1a8721db6",                        "badgeImage": "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-expert-badge.svg" },
         { "title": "Microsoft Certified: Fabric Analytics Engineer Associate",                              "issuedBy": "Microsoft",            "url": "https://learn.microsoft.com/en-us/users/zintaen/credentials/a8b4d8cd658949ac",                        "badgeImage": "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg" },
-        { "title": "AI Workplace Proficiency Certification",                                                "issuedBy": "Superhuman",           "url": "https://education.superhuman.ai/certificates/lvsyyjlokr",                                            "badgeImage": "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/publication/logo/faa6a747-8c1c-43c1-8155-91aa43268f01/Ad_9_2.png" },
-        { "title": "Microsoft Certified: Dynamics 365 Business Central Functional Consultant Associate",    "issuedBy": "Microsoft",            "url": "https://learn.microsoft.com/en-us/users/zintaen/credentials/30a639686d5425f0",                        "badgeImage": "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg" },
         { "title": "Microsoft Certified: AI Transformation Leader",                                         "issuedBy": "Microsoft",            "url": "https://learn.microsoft.com/en-us/users/zintaen/credentials/317ca0f98deaa138",                        "badgeImage": "https://learn.microsoft.com/media/learn/certification/badges/ai-transformation-leader.svg" },
+        { "title": "Claude Certified Architect – Foundations (CCA-F)",                                       "issuedBy": "Anthropic Education",  "url": "https://verify.skilljar.com/c/4dhjr6apfgpd",                                                         "badgeImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPsCP0_NG-S10g4EQ8HIdxm6RJWS8AvZsPVw&s" },
+        { "title": "AI Workplace Proficiency Certification",                                                "issuedBy": "Superhuman",           "url": "https://education.superhuman.ai/certificates/lvsyyjlokr",                                            "badgeImage": "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/publication/logo/faa6a747-8c1c-43c1-8155-91aa43268f01/Ad_9_2.png" },
         { "title": "Google Certified Educator Level 2",                                                     "issuedBy": "Google for Education", "url": "https://edu.google.accredible.com/74b9ea5e-165f-4871-a522-fff61a35080c",                             "badgeImage": "https://templates.images.credential.net/16231102294348353124512105608042.png" },
         { "title": "Google Certified Educator Level 1",                                                     "issuedBy": "Google for Education", "url": "https://edu.google.accredible.com/77a264c2-6f20-42dc-99cd-61a7bee8ce69",                             "badgeImage": "https://templates.images.credential.net/16231100289992143103707929119847.png" },
         { "title": "Gemini Certified University Student",                                                   "issuedBy": "Google for Education", "url": "https://edu.google.accredible.com/5306f0c9-aa46-4787-8927-73632427da3b#acc.WEAdOFey",                 "badgeImage": "https://templates.images.credential.net/17623509539731834497776877118523.png" },

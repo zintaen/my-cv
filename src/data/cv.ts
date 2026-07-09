@@ -31,6 +31,7 @@ import elasticsearchIcon from './icons/elasticsearch.svg?react';
 import gcpIcon from './icons/googlecloud.svg?react';
 import graphqlIcon from './icons/graphql.svg?react';
 import istioIcon from './icons/istio.svg?react';
+import javaIcon from './icons/java.svg?react';
 import kubernetesIcon from './icons/kubernetes.svg?react';
 import langchainIcon from './icons/langchain.svg?react';
 import nextjsIcon from './icons/nextdotjs.svg?react';
@@ -44,6 +45,7 @@ import pytorchIcon from './icons/pytorch.svg?react';
 import reactIcon from './icons/react.svg?react';
 import reduxIcon from './icons/redux.svg?react';
 import rustIcon from './icons/rust.svg?react';
+import springIcon from './icons/spring.svg?react';
 import typescriptIcon from './icons/typescript.svg?react';
 import webpackIcon from './icons/webpack.svg?react';
 
@@ -136,6 +138,7 @@ const SVG_REGISTRY: Record<string, SvgIconComponent> = {
     googlecloud: gcpIcon,
     graphql: graphqlIcon,
     istio: istioIcon,
+    java: javaIcon,
     kubernetes: kubernetesIcon,
     langchain: langchainIcon,
     nextdotjs: nextjsIcon,
@@ -149,6 +152,7 @@ const SVG_REGISTRY: Record<string, SvgIconComponent> = {
     react: reactIcon,
     redux: reduxIcon,
     rust: rustIcon,
+    spring: springIcon,
     typescript: typescriptIcon,
     webpack: webpackIcon,
 };
