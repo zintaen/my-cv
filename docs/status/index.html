@@ -3,147 +3,113 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>my-cv status — CyberOS</title>
-<style>
-@import url("assets/status.css");
-* { box-sizing: border-box; }
-body { margin:0; background:var(--cs-color-surface-page); color:var(--cs-color-text-primary);
-  font-family:var(--cs-font-family-ui); font-size:15px; line-height:var(--cs-font-lineHeight-body); }
-.hub-header { background:var(--cs-color-brand-umber); color:var(--cs-color-text-inverse);
-  padding:var(--cs-space-6) var(--cs-space-8) var(--cs-space-5);
-  border-bottom:3px solid var(--cs-color-brand-ochre); }
-.hub-header h1 { margin:0 0 var(--cs-space-1); font-size:26px; letter-spacing:.2px;
-  line-height:var(--cs-font-lineHeight-heading); }
-.hub-sub { color:var(--cs-color-surface-raised); font-size:14px; opacity:.92; }
-.hub-meta { margin-top:var(--cs-space-2); font-size:12.5px; color:var(--cs-color-surface-raised); opacity:.75; }
-.hub-meta .code { font-family:var(--cs-font-family-mono); }
-main.hub-wrap { max-width:1180px; margin:0 auto; padding:var(--cs-space-6) var(--cs-space-6) var(--cs-space-16); }
-.card { background:var(--cs-color-surface-panel); border:1px solid var(--cs-color-border-default);
-  border-radius:12px; padding:var(--cs-space-4) var(--cs-space-5); margin-bottom:var(--cs-space-5); }
-.card h2 { margin:0 0 var(--cs-space-3); font-size:14px; text-transform:uppercase;
-  letter-spacing:.08em; color:var(--cs-color-text-muted); }
-.bar { height:12px; border-radius:var(--cs-radius-full); background:var(--cs-color-surface-raised);
-  overflow:hidden; display:flex; }
-.bar i { display:block; height:100%; }
-.seg-done { background:var(--cs-color-semantic-success); }
-.seg-active { background:var(--cs-color-brand-ochre); }
-.seg-hold { background:var(--cs-color-text-muted); }
-.counts { display:flex; gap:var(--cs-space-5); flex-wrap:wrap; margin-top:var(--cs-space-3); font-size:13.5px; }
-.counts b { font-size:17px; }
-.counts .muted { color:var(--cs-color-text-muted); }
-.callout { background:var(--cs-color-surface-raised); border:1px solid var(--cs-color-brand-ochre);
-  border-left:4px solid var(--cs-color-brand-ochre); border-radius:10px;
-  padding:var(--cs-space-4) var(--cs-space-5); margin-bottom:var(--cs-space-5); }
-.callout h3 { margin:0 0 var(--cs-space-2); font-size:14px; }
-.legend { display:flex; gap:var(--cs-space-4); flex-wrap:wrap; margin:0 0 var(--cs-space-4);
-  font-size:13px; color:var(--cs-color-text-muted); }
-.legend span { display:inline-flex; align-items:center; gap:6px; }
-.dot { width:11px; height:11px; border-radius:3px; display:inline-block; }
-.hub-tabs { display:flex; gap:var(--cs-space-2); border-bottom:2px solid var(--cs-color-border-default);
-  margin-bottom:var(--cs-space-5); }
-.hub-tab { padding:var(--cs-space-2) var(--cs-space-5); text-decoration:none;
-  color:var(--cs-color-text-accent); border:1px solid var(--cs-color-border-default);
-  border-bottom:none; border-radius:var(--cs-radius-md) var(--cs-radius-md) 0 0;
-  background:var(--cs-color-surface-raised); font-size:14px; font-weight:600; }
-.hub-tab[aria-selected="true"] { background:var(--cs-color-brand-umber);
-  color:var(--cs-color-text-inverse); border-color:var(--cs-color-brand-umber); }
-.hub-panel[hidden] { display:none; }
-.hub-foot { margin-top:var(--cs-space-12); text-align:center; font-size:12px;
-  color:var(--cs-color-text-muted); }
-</style>
+<meta name="color-scheme" content="light dark">
+<title>my-cv status</title>
+<link rel="stylesheet" href="assets/status.css">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 </head>
-<body data-template-id="status-hub@1">
-<header class="hub-header">
-  <h1>my-cv status</h1>
-  <div class="hub-sub">Where my-cv is and what is coming — generated from FR frontmatter, CHANGELOG, and VERSION</div>
-  <div class="hub-meta">VERSION <span class="code">unversioned</span> · built from <span class="code">d3858ff9332d</span> · 0 FRs · 1 releases</div>
+<body data-template-id="status-hub@2">
+<a class="skip" href="#lens">Skip to content</a>
+
+<header class="hd">
+  <div class="wrap hd-in">
+    <div class="hd-id">
+      <span class="hd-mark" aria-hidden="true">M</span>
+      <div>
+        <h1>my-cv status</h1>
+        <p class="hd-sub">Where my-cv is and what is coming — generated from FR frontmatter, CHANGELOG and VERSION</p>
+      </div>
+    </div>
+    <div class="hd-side">
+      <p class="hd-meta">VERSION <span class="code">unversioned</span> · built from <span class="code">786e4fdfce2d</span> · 0 FRs · 1 releases</p>
+      <button id="theme" class="btn ghost" type="button" title="Toggle light / dark" aria-label="Toggle light / dark">◐</button>
+    </div>
+  </div>
 </header>
-<main class="hub-wrap">
-  <section class="card">
-<h2>Overall progress (0 feature requests · 0 modules)</h2>
-<div class="bar">
-  <i class="seg-done" style="width:0%" title="done 0"></i>
-  <i class="seg-active" style="width:0%" title="in flight 0"></i>
-  <i class="seg-hold" style="width:0%" title="on hold 0"></i>
+
+<main class="wrap">
+  <section class="deck" aria-label="Project pulse">
+<div class="panel">
+  <h2>Overall progress · 0 feature requests · 0 modules</h2>
+  <div class="kpis">
+    <button class="kpi" type="button" data-bucket="done" title="Filter to done"><b>0</b><span><i class="dot seg-done"></i>done</span></button>
+    <button class="kpi" type="button" data-bucket="active" title="Filter to in flight"><b>0</b><span><i class="dot seg-active"></i>in flight</span></button>
+    <button class="kpi" type="button" data-bucket="todo" title="Filter to draft"><b>0</b><span><i class="dot seg-todo"></i>draft</span></button>
+    <button class="kpi" type="button" data-bucket="hold" title="Filter to on hold"><b>0</b><span><i class="dot seg-hold"></i>on hold</span></button>
+    <div class="kpi"><b>—</b><span>open effort (h)</span></div>
+  </div>
+  <div class="bar-seg">
+    <i class="seg-done" style="width:0.0%" title="done 0"></i>
+    <i class="seg-active" style="width:0.0%" title="in flight 0"></i>
+    <i class="seg-hold" style="width:0.0%" title="on hold 0"></i>
+  </div>
+  <div class="legend">
+    <span><i class="dot seg-done"></i> done / closed (0.0%)</span>
+    <span><i class="dot seg-active"></i> in flight — ready_to_implement → testing</span>
+    <span><i class="dot seg-todo"></i> draft</span>
+    <span><i class="dot seg-hold"></i> on hold</span>
+    <span class="muted">click a number to filter · click any FR to open it</span>
+  </div>
 </div>
-<div class="counts">
-  <span><b>0</b> done <span class="muted">(0%)</span></span>
-  <span><b>0</b> in flight</span>
-  <span><b>0</b> draft</span>
-  <span><b>0</b> on hold</span>
-  <span><b>1</b> releases</span>
-  <span class="muted">latest 2026-04-05</span>
+<div class="panel">
+  <h2>Releases · 1 · latest 2026-04-05</h2>
+  <div class="spark"><a href="#timeline" title="2026-04-05 — 0 FRs"><b>0</b><i style="height:4px"></i><span>2026-04-05</span></a></div>
+  <p class="relnote">FRs bound to each release — cited in the entry, or matched by <code>shipped:</code> date.</p>
 </div></section>
+
   
-  
-<div class="legend">
-  <span><i class="dot seg-done"></i> done / closed</span>
-  <span><i class="dot seg-active"></i> in flight (ready_to_implement → testing)</span>
-  <span><i class="dot" style="background:var(--cs-color-border-default)"></i> draft</span>
-  <span><i class="dot seg-hold"></i> on hold</span>
-  <span class="muted">chips link to each FR's page · hover for title + status</span>
-</div>
-  <nav class="hub-tabs" role="tablist">
-    <a class="hub-tab" role="tab" href="#roadmap" data-tab="roadmap">Roadmap</a>
-    <a class="hub-tab" role="tab" href="#backlog" data-tab="backlog">Backlog</a>
-    <a class="hub-tab" role="tab" href="#changelog" data-tab="changelog">Changelog</a>
+
+  <nav class="bar" id="bar" aria-label="Search, filters and views">
+    <div class="bar-top">
+      <label class="srch">
+        <span class="ic" aria-hidden="true">⌕</span>
+        <input id="q" type="search" placeholder="Search 0 FRs — id, title, module, owner, phase…" autocomplete="off" spellcheck="false">
+      </label>
+      <div class="lenses" role="tablist" aria-label="View">
+        <button class="ln" role="tab" type="button" data-lens="board" aria-selected="true">▦ Board</button>
+        <button class="ln" role="tab" type="button" data-lens="table" aria-selected="false">☰ Table</button>
+        <button class="ln" role="tab" type="button" data-lens="timeline" aria-selected="false">◷ Releases</button>
+      </div>
+    </div>
+    <div class="bar-bot">
+      <label class="facet">module<select id="f-m"><option value="">all</option></select></label>
+  <label class="facet">status<select id="f-s"><option value="">all</option></select></label>
+  <label class="facet">priority<select id="f-p"><option value="">all</option></select></label>
+  <label class="facet">class<select id="f-c"><option value="">all</option></select></label>
+  <label class="facet">phase<select id="f-ph"><option value="">all</option></select></label>
+  <label class="facet">group by<select id="f-g"><option value="m">module</option><option value="ph">phase</option><option value="s">status</option><option value="p">priority</option><option value="c">class</option><option value="o">owner</option></select></label>
+      <button id="clear" class="btn ghost sm" type="button">Clear</button>
+      <output id="count" class="cnt" for="q"></output>
+    </div>
+    <div class="chipbar" id="active-filters" hidden></div>
   </nav>
-  <section class="hub-panel" id="roadmap" role="tabpanel">
-<div class="grid">
 
+  <div id="lens" class="lens" role="region" aria-live="polite" aria-label="Feature requests"></div>
 
-</div>
-<h2 class="section-h">Module rollups</h2>
-<table><thead><tr><th>module</th><th>total</th><th>draft</th><th>ready_to_implement</th><th>implementing</th><th>ready_to_review</th><th>reviewing</th><th>ready_to_test</th><th>testing</th><th>done</th><th>on_hold</th><th>closed</th></tr></thead><tbody>
+  <noscript>
+    <div class="nojs">
+<p class="relnote">JavaScript is off, so the lenses, filters and the FR drawer are unavailable.
+Everything below is the same corpus, rendered statically.</p>
+<div class="tbl-wrap"><table><thead><tr>
+<th>id</th><th>title</th><th>module</th><th>class</th><th>priority</th><th>phase</th><th>status</th>
+</tr></thead><tbody>
 
-</tbody></table></section>
-  <section class="hub-panel" id="backlog" role="tabpanel">
-<p class="hub-note">Generated view - FR frontmatter is the record of truth; agents write through BACKLOG.md.</p>
-<div class="bk-facets">
-  <select id="bk-module"><option value="">all modules</option></select>
-  <select id="bk-class"><option value="">all classes</option><option value="product">product</option><option value="improvement">improvement</option></select>
-  <select id="bk-priority"><option value="">all priorities</option></select>
-  <select id="bk-status"><option value="">all statuses</option><option value="draft">draft</option><option value="ready_to_implement">ready_to_implement</option><option value="implementing">implementing</option><option value="ready_to_review">ready_to_review</option><option value="reviewing">reviewing</option><option value="ready_to_test">ready_to_test</option><option value="testing">testing</option><option value="done">done</option><option value="on_hold">on_hold</option><option value="closed">closed</option></select>
-</div>
-<table id="bk-table"><thead><tr><th>id</th><th>title</th><th>module</th><th>class</th><th>priority</th><th>status</th></tr></thead><tbody>
+</tbody></table></div>
+<h3 class="groupq">Releases</h3>
+<article class="rel"><span class="tick">✓</span><div>
+  <div class="rel-h"><b>2026-04-05</b></div>
+  
+  <div class="rel-sec"><h4>Notes</h4><ul><li>Removed dead dependency <code>motion</code> from <code>dependencies</code> (never imported, ~12 MB saved)</li><li>Removed duplicate <code>vite</code> from <code>dependencies</code> (kept in <code>devDependencies</code> only)</li><li>Deleted dead code <code>src/shared/constant/routes.ts</code> and its barrel re-export (ROUTES, PRIVATE_ROUTES never consumed)</li><li>Removed dead <code>#modules</code> path alias from <code>tsconfig.json</code> and <code>alias.ts</code> (directory <code>src/modules/</code> does not exist)</li><li>Fixed all 6 ESLint warnings:</li><li>Replaced array index keys with stable identifiers (company name, skill title, cert title) in Chronicle, Sidebar, Credentials</li><li>Suppressed index key for static bullet arrays with inline eslint-disable comment</li><li>Removed <code>console.warn</code> from render path in <code>IconRenderer.tsx</code> (react/purity rule)</li><li>Fixed import order and if-newline style in <code>IconRenderer.tsx</code></li><li>Deleted duplicate <code>public/avatar.jpg</code> (identical to <code>src/data/my-pic.jpg</code>, 227 KB saved)</li><li>Fixed CI deploy workflow: Node version now reads from <code>.nvmrc</code> instead of hardcoded <code>20</code></li><li>Fixed CI deploy workflow: Changed <code>--no-frozen-lockfile</code> to <code>--frozen-lockfile</code> for reproducible builds</li><li>Added <code>timeout-minutes: 10</code> to both CI workflow jobs (deploy + check)</li><li>Bumped package version from <code>0.0.0</code> to <code>1.0.0</code></li><li><code>.agent/issue_report_2026-04-05_22-51.md</code> — 11 verified issues (0 Critical, 3 High, 5 Medium, 3 Low)</li><li><code>.agent/feature_report_2026-04-05_22-51.md</code> — 10 feature suggestions across 5 categories</li><li><code>docs/CHANGELOG.md</code> — This file</li><li><code>package.json</code> — Removed <code>motion</code>, duplicate <code>vite</code>; bumped version</li><li><code>src/shared/constant/index.ts</code> — Removed dead routes re-export</li><li><code>src/shared/constant/alias.ts</code> — Removed <code>#modules</code> alias</li><li><code>tsconfig.json</code> — Removed <code>#modules</code> path mapping</li><li><code>src/components/Chronicle.tsx</code> — Stable React keys + eslint-disable for bullets</li><li><code>src/components/Credentials.tsx</code> — Stable React keys (cert.title)</li><li><code>src/components/Sidebar.tsx</code> — Stable React keys (group.title, skill.title)</li><li><code>src/components/ui/IconRenderer.tsx</code> — Removed console.warn from render; fixed import order</li><li><code>.github/workflows/deploy.yml</code> — Node version from .nvmrc, frozen-lockfile, timeout</li><li><code>.github/workflows/check.yml</code> — Added timeout-minutes</li><li><code>src/shared/constant/routes.ts</code> — Dead code (never imported)</li><li><code>public/avatar.jpg</code> — Duplicate of <code>src/data/my-pic.jpg</code></li></ul></div>
+</div></article></div>
+  </noscript>
 
-</tbody></table>
-<script>
-(function () {
-  var sel = ['bk-module','bk-class','bk-priority','bk-status'].map(function (i) { return document.getElementById(i); });
-  var keys = ['module','class','priority','status'];
-  function apply() {
-    document.querySelectorAll('#bk-table tbody tr').forEach(function (tr) {
-      tr.hidden = !sel.every(function (s, i) { return !s.value || tr.dataset[keys[i]] === s.value; });
-    });
-  }
-  sel.forEach(function (s) { s.addEventListener('change', apply); });
-})();
-</script></section>
-  <section class="hub-panel" id="changelog" role="tabpanel"><div class="phases">
-<article class="phase now">
-  <span class="tick">★</span>
-  <div><b>2026-04-05</b>
-  <span>### Fixed<br>- Removed dead dependency `motion` from `dependencies` (never imported, ~12 MB saved)<br>- Removed duplicate `vite` from `dependencies` (kept in `devDependencies` only)<br>- Deleted dead code `src/shared/constant/routes.ts` and its barrel re-export (ROUTES, PRIVATE_ROUTES never consumed)<br>- Removed dead `#modules` path alias from `tsconfig.json` and `alias.ts` (directory `src/modules/` does not exist)<br>- Fixed all 6 ESLint warnings:<br>- Replaced array index keys with stable identifiers (company name, skill title, cert title) in Chronicle, Sidebar, Credentials<br>- Suppressed index key for static bullet arrays with inline eslint-disable comment<br>- Removed `console.warn` from render path in `IconRenderer.tsx` (react/purity rule)<br>- Fixed import order and if-newline style in `IconRenderer.tsx`<br>- Deleted duplicate `public/avatar.jpg` (identical to `src/data/my-pic.jpg`, 227 KB saved)<br>- Fixed CI deploy workflow: Node version now reads from `.nvmrc` instead of hardcoded `20`<br>- Fixed CI deploy workflow: Changed `--no-frozen-lockfile` to `--frozen-lockfile` for reproducible builds<br>- Added `timeout-minutes: 10` to both CI workflow jobs (deploy + check)<br>- Bumped package version from `0.0.0` to `1.0.0`<br>### Files Created<br>- `.agent/issue_report_2026-04-05_22-51.md` — 11 verified issues (0 Critical, 3 High, 5 Medium, 3 Low)<br>- `.agent/feature_report_2026-04-05_22-51.md` — 10 feature suggestions across 5 categories<br>- `docs/CHANGELOG.md` — This file<br>### Files Modified<br>- `package.json` — Removed `motion`, duplicate `vite`; bumped version<br>- `src/shared/constant/index.ts` — Removed dead routes re-export<br>- `src/shared/constant/alias.ts` — Removed `#modules` alias<br>- `tsconfig.json` — Removed `#modules` path mapping<br>- `src/components/Chronicle.tsx` — Stable React keys + eslint-disable for bullets<br>- `src/components/Credentials.tsx` — Stable React keys (cert.title)<br>- `src/components/Sidebar.tsx` — Stable React keys (group.title, skill.title)<br>- `src/components/ui/IconRenderer.tsx` — Removed console.warn from render; fixed import order<br>- `.github/workflows/deploy.yml` — Node version from .nvmrc, frozen-lockfile, timeout<br>- `.github/workflows/check.yml` — Added timeout-minutes<br>### Files Deleted<br>- `src/shared/constant/routes.ts` — Dead code (never imported)<br>- `public/avatar.jpg` — Duplicate of `src/data/my-pic.jpg`</span></div>
-</article></div></section>
-  <footer class="hub-foot">my-cv — generated at unversioned (d3858ff9332d). Markdown is the record of truth; this page only renders it.</footer>
+  <footer class="ft">my-cv — generated at unversioned (786e4fdfce2d). Markdown is the record of truth; this page only renders it.</footer>
 </main>
-<script>
-(function () {
-  var tabs = document.querySelectorAll('.hub-tab');
-  var panels = { roadmap: document.getElementById('roadmap'),
-                 backlog: document.getElementById('backlog'),
-                 changelog: document.getElementById('changelog') };
-  function show(name) {
-    if (!panels[name]) name = 'roadmap';
-    Object.keys(panels).forEach(function (k) { panels[k].hidden = (k !== name); });
-    tabs.forEach(function (t) { t.setAttribute('aria-selected', t.dataset.tab === name ? 'true' : 'false'); });
-  }
-  window.addEventListener('hashchange', function () { show(location.hash.slice(1)); });
-  show(location.hash.slice(1) || 'roadmap');
-})();
-</script>
-<noscript><style>.hub-panel[hidden]{display:block !important}</style></noscript>
+
+<div id="scrim" class="scrim" hidden></div>
+<aside id="drawer" class="drawer" hidden role="dialog" aria-modal="true" aria-labelledby="dw-title"></aside>
+
+<script type="application/json" id="cs-data">{"project":"my-cv","version":"unversioned","commit":"786e4fdfce2d","statuses":["draft","ready_to_implement","implementing","ready_to_review","reviewing","ready_to_test","testing","done","on_hold","closed"],"specDir":"data/fr","frBase":"../feature-requests/","frs":[],"releases":[{"v":"2026-04-05","vl":"2026-04-05","d":"","intro":["\u003ch3>Fixed\u003c/h3>","\u003ch3>Files Created\u003c/h3>","\u003ch3>Files Modified\u003c/h3>","\u003ch3>Files Deleted\u003c/h3>"],"sec":[{"h":"Notes","items":["Removed dead dependency \u003ccode>motion\u003c/code> from \u003ccode>dependencies\u003c/code> (never imported, ~12 MB saved)","Removed duplicate \u003ccode>vite\u003c/code> from \u003ccode>dependencies\u003c/code> (kept in \u003ccode>devDependencies\u003c/code> only)","Deleted dead code \u003ccode>src/shared/constant/routes.ts\u003c/code> and its barrel re-export (ROUTES, PRIVATE_ROUTES never consumed)","Removed dead \u003ccode>#modules\u003c/code> path alias from \u003ccode>tsconfig.json\u003c/code> and \u003ccode>alias.ts\u003c/code> (directory \u003ccode>src/modules/\u003c/code> does not exist)","Fixed all 6 ESLint warnings:","Replaced array index keys with stable identifiers (company name, skill title, cert title) in Chronicle, Sidebar, Credentials","Suppressed index key for static bullet arrays with inline eslint-disable comment","Removed \u003ccode>console.warn\u003c/code> from render path in \u003ccode>IconRenderer.tsx\u003c/code> (react/purity rule)","Fixed import order and if-newline style in \u003ccode>IconRenderer.tsx\u003c/code>","Deleted duplicate \u003ccode>public/avatar.jpg\u003c/code> (identical to \u003ccode>src/data/my-pic.jpg\u003c/code>, 227 KB saved)","Fixed CI deploy workflow: Node version now reads from \u003ccode>.nvmrc\u003c/code> instead of hardcoded \u003ccode>20\u003c/code>","Fixed CI deploy workflow: Changed \u003ccode>--no-frozen-lockfile\u003c/code> to \u003ccode>--frozen-lockfile\u003c/code> for reproducible builds","Added \u003ccode>timeout-minutes: 10\u003c/code> to both CI workflow jobs (deploy + check)","Bumped package version from \u003ccode>0.0.0\u003c/code> to \u003ccode>1.0.0\u003c/code>","\u003ccode>.agent/issue_report_2026-04-05_22-51.md\u003c/code> — 11 verified issues (0 Critical, 3 High, 5 Medium, 3 Low)","\u003ccode>.agent/feature_report_2026-04-05_22-51.md\u003c/code> — 10 feature suggestions across 5 categories","\u003ccode>docs/CHANGELOG.md\u003c/code> — This file","\u003ccode>package.json\u003c/code> — Removed \u003ccode>motion\u003c/code>, duplicate \u003ccode>vite\u003c/code>; bumped version","\u003ccode>src/shared/constant/index.ts\u003c/code> — Removed dead routes re-export","\u003ccode>src/shared/constant/alias.ts\u003c/code> — Removed \u003ccode>#modules\u003c/code> alias","\u003ccode>tsconfig.json\u003c/code> — Removed \u003ccode>#modules\u003c/code> path mapping","\u003ccode>src/components/Chronicle.tsx\u003c/code> — Stable React keys + eslint-disable for bullets","\u003ccode>src/components/Credentials.tsx\u003c/code> — Stable React keys (cert.title)","\u003ccode>src/components/Sidebar.tsx\u003c/code> — Stable React keys (group.title, skill.title)","\u003ccode>src/components/ui/IconRenderer.tsx\u003c/code> — Removed console.warn from render; fixed import order","\u003ccode>.github/workflows/deploy.yml\u003c/code> — Node version from .nvmrc, frozen-lockfile, timeout","\u003ccode>.github/workflows/check.yml\u003c/code> — Added timeout-minutes","\u003ccode>src/shared/constant/routes.ts\u003c/code> — Dead code (never imported)","\u003ccode>public/avatar.jpg\u003c/code> — Duplicate of \u003ccode>src/data/my-pic.jpg\u003c/code>"]}],"cited":[],"dated":[]}],"bound":[]}</script>
+<script defer src="assets/status.js"></script>
 </body>
 </html>
