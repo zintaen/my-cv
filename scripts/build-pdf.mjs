@@ -303,7 +303,9 @@ async function renderPdf() {
 
         console.log(`📄 Navigating to ${URL}…`);
 
-        await page.goto(URL, { waitUntil: 'networkidle0', timeout: 45_000 });
+        // networkidle0 can hang forever on CI if any long-poll/keepalive stays open.
+        await page.goto(URL, { waitUntil: 'domcontentloaded', timeout: 45_000 });
+        await page.waitForSelector('#cv-root, body', { timeout: 30_000 });
 
         // Tag <html> so our `html.pdf` CSS applies.
         await page.evaluate(() => document.documentElement.classList.add('pdf'));
