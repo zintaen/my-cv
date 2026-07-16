@@ -82,7 +82,12 @@ function startVite() {
         const maybeResolve = (chunk) => {
             const text = chunk.toString();
             log += text;
-            if (!started && /(Local:|ready in|localhost:)/i.test(text)) {
+            // Vite 8 colors "Local" and ":" separately (ANSI codes between them),
+            // so do not require a contiguous "Local:" substring.
+            if (
+                !started &&
+                /(Local|ready in|localhost:|127\.0\.0\.1:\d+)/i.test(text)
+            ) {
                 started = true;
                 setTimeout(() => resolveStart(() => proc.kill('SIGTERM')), 350);
             }
