@@ -39,7 +39,8 @@
 
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
-import { dirname, resolve } from 'node:path';
+import http from 'node:http';
+import { dirname, extname, join, resolve } from 'node:path';
 import process from 'node:process';
 import { fileURLToPath } from 'node:url';
 
@@ -55,14 +56,72 @@ const OUTPUT = resolve(
 );
 const PORT = Number(process.env.PDF_PORT || 4173);
 const URL = `http://127.0.0.1:${PORT}/`;
+/** Hard ceiling so CI never hangs the deploy job. */
+const OVERALL_TIMEOUT_MS = Number(process.env.PDF_TIMEOUT_MS || 90_000);
 
 // A4 @ 96dpi: 595.28pt × 841.89pt → 793.7px × 1122.5px
 const PAGE_W = 794;
 const PAGE_H = 1123;
 
+const MIME = {
+    '.html': 'text/html; charset=utf-8',
+    '.js': 'text/javascript; charset=utf-8',
+    '.css': 'text/css; charset=utf-8',
+    '.svg': 'image/svg+xml',
+    '.png': 'image/png',
+    '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg',
+    '.webp': 'image/webp',
+    '.woff': 'font/woff',
+    '.woff2': 'font/woff2',
+    '.json': 'application/json',
+};
+
 // ─────────────────────────────────────────────────────────────────────────────
-//  Vite boot
+//  Local static server (preferred) or Vite fallback
 // ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Serve a production `dist/` tree with Node's http module — no Vite subprocess,
+ * no ANSI ready-line parsing, instant listen callback.
+ */
+function startStaticServer(distDir) {
+    return new Promise((resolveStart, reject) => {
+        console.log(`🚀 Serving static ${distDir} on :${PORT}…`);
+        const server = http.createServer((req, res) => {
+            try {
+                const raw = decodeURIComponent((req.url || '/').split('?')[0]);
+                let rel = raw === '/' ? '/index.html' : raw;
+                // Prevent path traversal
+                const filePath = resolve(distDir, `.${rel}`);
+                if (!filePath.startsWith(distDir)) {
+                    res.writeHead(403).end('Forbidden');
+                    return;
+                }
+                let target = filePath;
+                if (!fs.existsSync(target) || fs.statSync(target).isDirectory()) {
+                    const asIndex = join(filePath, 'index.html');
+                    if (fs.existsSync(asIndex)) target = asIndex;
+                    else if (!fs.existsSync(target)) {
+                        res.writeHead(404).end('Not found');
+                        return;
+                    }
+                }
+                const type = MIME[extname(target).toLowerCase()] || 'application/octet-stream';
+                res.writeHead(200, { 'Content-Type': type });
+                fs.createReadStream(target).pipe(res);
+            } catch (err) {
+                res.writeHead(500).end(String(err));
+            }
+        });
+        server.once('error', reject);
+        server.listen(PORT, '127.0.0.1', () => {
+            resolveStart(() =>
+                new Promise((r) => server.close(() => r())),
+            );
+        });
+    });
+}
 
 function startVite() {
     return new Promise((resolveStart, reject) => {
@@ -82,14 +141,15 @@ function startVite() {
         const maybeResolve = (chunk) => {
             const text = chunk.toString();
             log += text;
-            // Vite 8 colors "Local" and ":" separately (ANSI codes between them),
-            // so do not require a contiguous "Local:" substring.
+            // Vite 8 colors "Local" and ":" separately (ANSI codes between them).
             if (
                 !started &&
                 /(Local|ready in|localhost:|127\.0\.0\.1:\d+)/i.test(text)
             ) {
                 started = true;
-                setTimeout(() => resolveStart(() => proc.kill('SIGTERM')), 350);
+                setTimeout(() => resolveStart(() => {
+                    proc.kill('SIGTERM');
+                }), 350);
             }
         };
 
@@ -103,10 +163,18 @@ function startVite() {
         setTimeout(() => {
             if (!started) {
                 proc.kill('SIGTERM');
-                reject(new Error(`Vite start timeout after 45s\n${log}`));
+                reject(new Error(`Vite start timeout after 20s\n${log}`));
             }
-        }, 45_000);
+        }, 20_000);
     });
+}
+
+async function startServer() {
+    const distDir = resolve(ROOT, 'dist');
+    if (fs.existsSync(resolve(distDir, 'index.html'))) {
+        return startStaticServer(distDir);
+    }
+    return startVite();
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -248,7 +316,8 @@ const PDF_STYLE = `
 // ─────────────────────────────────────────────────────────────────────────────
 
 async function renderPdf() {
-    const stopVite = await startVite();
+    const stopServer = await startServer();
+    let browser;
 
     try {
         console.log('🌐 Launching headless Chrome…');
@@ -278,18 +347,20 @@ async function renderPdf() {
 
         const launchOpts = {
             headless: true,
-            protocolTimeout: 120_000,
-            timeout: 120_000,
+            protocolTimeout: 60_000,
+            timeout: 30_000,
             args: [
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
                 '--disable-dev-shm-usage',
                 '--font-render-hinting=medium',
                 '--disable-gpu',
+                '--single-process',
+                '--no-zygote',
             ],
         };
         if (execPath) launchOpts.executablePath = execPath;
-        const browser = await puppeteer.launch(launchOpts);
+        browser = await puppeteer.launch(launchOpts);
 
         const page = await browser.newPage();
 
@@ -304,8 +375,8 @@ async function renderPdf() {
         console.log(`📄 Navigating to ${URL}…`);
 
         // networkidle0 can hang forever on CI if any long-poll/keepalive stays open.
-        await page.goto(URL, { waitUntil: 'domcontentloaded', timeout: 45_000 });
-        await page.waitForSelector('#cv-root, body', { timeout: 30_000 });
+        await page.goto(URL, { waitUntil: 'domcontentloaded', timeout: 20_000 });
+        await page.waitForSelector('#cv-root', { timeout: 15_000 });
 
         // Tag <html> so our `html.pdf` CSS applies.
         await page.evaluate(() => document.documentElement.classList.add('pdf'));
@@ -313,28 +384,31 @@ async function renderPdf() {
         // Inject layout overrides that simulate the `lg:` breakpoints.
         await page.addStyleTag({ content: PDF_STYLE });
 
-        // Wait for fonts and any remote images.
-        await page.evaluate(async () => {
-            await document.fonts.ready;
-            const imgs = Array.from(document.images).filter((i) => !i.complete);
-            await Promise.all(
-                imgs.map(
-                    (img) =>
-                        new Promise((r) => {
-                            img.addEventListener('load', () => r(null), { once: true });
-                            img.addEventListener('error', () => r(null), { once: true });
-                        }),
-                ),
-            );
-        });
+        // Wait for fonts (capped) and any remote images (capped).
+        await Promise.race([
+            page.evaluate(async () => {
+                await document.fonts.ready;
+                const imgs = Array.from(document.images).filter((i) => !i.complete);
+                await Promise.all(
+                    imgs.map(
+                        (img) =>
+                            new Promise((r) => {
+                                img.addEventListener('load', () => r(null), { once: true });
+                                img.addEventListener('error', () => r(null), { once: true });
+                            }),
+                    ),
+                );
+            }),
+            new Promise((r) => setTimeout(r, 5_000)),
+        ]);
 
         // Small settle — layout reflow after CSS injection + fonts.
-        await new Promise((r) => setTimeout(r, 1500));
+        await new Promise((r) => setTimeout(r, 500));
 
         // Verify the page actually rendered content.
         const bodyLen = await page.evaluate(() => document.body?.innerText?.length || 0);
         if (bodyLen < 100) {
-            throw new Error(`Page appears blank (only ${bodyLen} chars). Check Vite server output.`);
+            throw new Error(`Page appears blank (only ${bodyLen} chars). Check server output.`);
         }
 
         console.log('🖨️  Emitting tagged A4 PDF…');
@@ -346,6 +420,7 @@ async function renderPdf() {
             preferCSSPageSize: false,
             tagged: true,                   // StructTreeRoot → ATS reading order
             outline: false,
+            timeout: 30_000,
             margin: { top: '0', bottom: '0', left: '0', right: '0' },
         });
         const buffer = fs.readFileSync(tmpPath);
@@ -353,6 +428,7 @@ async function renderPdf() {
         console.log(`📦 Raw PDF buffer: ${Math.round(buffer.length / 1024)} KB`);
 
         await browser.close();
+        browser = undefined;
 
         // ─── Post-process: embed ATS-relevant metadata ───────────────────
         console.log('🔧 Embedding metadata via pdf-lib…');
@@ -387,12 +463,39 @@ async function renderPdf() {
         const sizeKb = Math.round(out.length / 1024);
         console.log(`✅ PDF ready → ${OUTPUT} (${sizeKb} KB)`);
     } finally {
-        stopVite();
+        if (browser) {
+            try {
+                await browser.close();
+            } catch {
+                // ignore close races
+            }
+        }
+        await stopServer();
     }
 }
 
-renderPdf().catch((err) => {
-    console.error('❌ PDF generation failed:');
-    console.error(err);
-    process.exit(1);
-});
+function withTimeout(promise, ms, label) {
+    return new Promise((resolve, reject) => {
+        const t = setTimeout(
+            () => reject(new Error(`${label} timed out after ${ms}ms`)),
+            ms,
+        );
+        promise.then(
+            (v) => {
+                clearTimeout(t);
+                resolve(v);
+            },
+            (e) => {
+                clearTimeout(t);
+                reject(e);
+            },
+        );
+    });
+}
+
+withTimeout(renderPdf(), OVERALL_TIMEOUT_MS, 'PDF pipeline')
+    .catch((err) => {
+        console.error('❌ PDF generation failed:');
+        console.error(err);
+        process.exit(1);
+    });

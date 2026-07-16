@@ -20,7 +20,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -47,14 +47,16 @@ jobs:
           echo "Using Chrome at $CHROME_PATH"
           test -x "$CHROME_PATH"
 
-      # Build first so PDF generation uses `vite preview` (faster/stabler than dev).
+      # Build first so PDF generation serves dist/ via a plain Node static server.
       - name: Build site
         run: pnpm run build
 
       - name: Generate PDF
+        timeout-minutes: 3
         run: pnpm run pdf public/Stephen_Cheng_CV.pdf
         env:
           PUPPETEER_EXECUTABLE_PATH: ${{ env.PUPPETEER_EXECUTABLE_PATH }}
+          PDF_TIMEOUT_MS: "90000"
 
       # Rebuild so dist/ includes the freshly generated PDF from public/.
       - name: Rebuild with PDF asset
