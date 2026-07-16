@@ -248,26 +248,39 @@ async function renderPdf() {
     try {
         console.log('🌐 Launching headless Chrome…');
 
-        // On ARM64 Linux puppeteer's bundled Chromium is x86-only; prefer a
-        // system chromium (via PUPPETEER_EXECUTABLE_PATH) or a playwright
-        // ARM64 chromium install if present.
-        const fallbackChromes = [
-            process.env.PUPPETEER_EXECUTABLE_PATH,
-            '/sessions/quirky-busy-wright/.cache/ms-playwright/chromium-1140/chrome-linux/chrome',
-            '/usr/bin/chromium',
-            '/usr/bin/chromium-browser',
-            '/usr/bin/google-chrome',
-        ].filter(Boolean);
-        const execPath = fallbackChromes.find((p) => fs.existsSync(p)) || undefined;
+        // Prefer Puppeteer's own Chrome (installed via `puppeteer browsers install
+        // chrome` in CI). System `/usr/bin/chromium` often exists on runners but
+        // fails to expose a WS endpoint without matching packages.
+        let execPath = process.env.PUPPETEER_EXECUTABLE_PATH;
+        if (!execPath) {
+            try {
+                const bundled = puppeteer.executablePath();
+                if (bundled && fs.existsSync(bundled)) execPath = bundled;
+            } catch {
+                // ignore — fall through to system paths
+            }
+        }
+        if (!execPath) {
+            const fallbackChromes = [
+                '/usr/bin/google-chrome',
+                '/usr/bin/google-chrome-stable',
+                '/usr/bin/chromium',
+                '/usr/bin/chromium-browser',
+            ];
+            execPath = fallbackChromes.find((p) => fs.existsSync(p));
+        }
         if (execPath) console.log(`   using chromium at ${execPath}`);
 
         const launchOpts = {
             headless: true,
+            protocolTimeout: 120_000,
+            timeout: 120_000,
             args: [
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
                 '--disable-dev-shm-usage',
                 '--font-render-hinting=medium',
+                '--disable-gpu',
             ],
         };
         if (execPath) launchOpts.executablePath = execPath;
