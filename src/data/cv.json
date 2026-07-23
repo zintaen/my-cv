@@ -4,7 +4,7 @@
 
     "profile": {
         "name": "Stephen Cheng",
-        "title": "Senior Dynamics 365 Business Central & AL Developer",
+        "title": "Technical Lead | Agentic AI & ERP Solutions Architect",
         "contact": {
             "email": "zintaen@gmail.com",
             "phone": "+84906878091",
@@ -14,9 +14,28 @@
         "avatar": "my-pic.jpg"
     },
 
-    "professionalSummary": "Senior Developer with over 10 years of software engineering experience, highly specialized in Microsoft Dynamics 365 Business Central and AL programming. Proven track record in designing, developing, and deploying complex ERP extensions, custom modules, and cross-platform system integrations. Strong expertise in optimizing Business Central architectures, building OData/REST API integrations, and leveraging the broader Microsoft Power Platform ecosystem (Power BI, Power Automate) and Azure Cloud. Adept at migrating legacy NAV systems to modern D365 BC cloud environments and leading technical implementations that drive operational efficiency and measurable business value.",
+    "professionalSummary": "Senior engineer and technical lead with 10+ years of experience spanning enterprise ERP systems (D365 BC / NAV) and a deliberate specialisation in Applied AI since 2022. Practitioner-level expertise in agentic system design — including RAG pipeline engineering, HITL (Human-in-the-Loop) workflow orchestration, context engineering, prompt harness design, and multi-agent loop architecture. Led engineering teams at Kydon Group and Vincere.io, owning delivery from architecture through to production across both product and integration domains. Certified Microsoft Agentic AI Business Solutions Architect and Claude Certified Architect, with deep roots in D365 BC implementation, OData/REST integration, and Azure Cloud.",
 
     "skillGroups": [
+        {
+            "title": "Applied AI & Agentic Systems",
+            "skills": [
+                { "title": "RAG Pipelines",              "subtitle": "Retrieval-Augmented Gen.",  "ats": "RAG, Retrieval-Augmented Generation, vector search, embedding pipelines",               "icon": { "type": "lucide", "name": "Search" } },
+                { "title": "HITL Design",                "subtitle": "Human-in-the-Loop",         "ats": "HITL, Human-in-the-Loop orchestration, AI approval workflow design",                    "icon": { "type": "lucide", "name": "UserCheck" } },
+                { "title": "Context Engineering",                                                  "ats": "Context engineering, token budget management, prompt context window optimisation",       "icon": { "type": "lucide", "name": "ScrollText" } },
+                { "title": "Harness Engineering",        "subtitle": "LLM Eval Harnesses",        "ats": "LLM harness engineering, evaluation harness design, automated LLM testing pipelines",   "icon": { "type": "lucide", "name": "TestTube" } },
+                { "title": "Loop Engineering",           "subtitle": "Agentic Loops",             "ats": "Agentic loop engineering, multi-step agent design, planning and reflection loops",       "icon": { "type": "lucide", "name": "RefreshCw" } },
+                { "title": "Prompt Engineering",                                                   "ats": "Prompt engineering, structured prompting, few-shot and chain-of-thought prompting",      "icon": { "type": "lucide", "name": "MessageSquare" } },
+                { "title": "Multi-Agent Orchestration",                                            "ats": "Multi-agent orchestration, agent coordination, task delegation across agents",           "icon": { "type": "lucide", "name": "Network" } },
+                { "title": "LLM Evaluation",             "subtitle": "Evals & Metrics",           "ats": "LLM evaluation, evals, AI quality metrics, benchmark design, automated vs. human eval", "icon": { "type": "lucide", "name": "ClipboardCheck" } },
+                { "title": "AI Observability",           "subtitle": "Tracing & Monitoring",      "ats": "AI observability, LLM call tracing, production AI monitoring, hallucination debugging",  "icon": { "type": "lucide", "name": "Activity" } },
+                { "title": "MCP",                        "subtitle": "Model Context Protocol",    "ats": "MCP, Model Context Protocol, custom MCP server development, tool-use integration",       "icon": { "type": "lucide", "name": "Cpu" } },
+                { "title": "LangChain / LangGraph",                                               "ats": "LangChain, LangGraph, LLM orchestration framework, graph-based agent flows",             "icon": { "type": "svg",    "id": "langchain" } },
+                { "title": "OpenAI / Azure AI",                                                   "ats": "OpenAI API, Azure OpenAI, GPT-4, LLM API integration",                                  "icon": { "type": "svg",    "id": "openai" } },
+                { "title": "Anthropic Claude",                                                     "ats": "Anthropic Claude, Claude API, Claude SDK, Claude Sonnet",                                "icon": { "type": "svg",    "id": "anthropic" } },
+                { "title": "Vector Databases",                                                     "ats": "Pinecone, vector databases, embedding stores, semantic search, ANN retrieval",           "icon": { "type": "svg",    "id": "pinecone" } }
+            ]
+        },
         {
             "title": "Dynamics 365 & ERP",
             "skills": [
@@ -26,28 +45,31 @@
                 { "title": "ERP Implementation", "ats": "ERP Implementation, Configuration",                   "icon": { "type": "lucide", "name": "Settings" } },
                 { "title": "Data Migration",     "ats": "Data Migration, RapidStart Services",                 "icon": { "type": "lucide", "name": "Database" } },
                 { "title": "Report Design",      "subtitle": "(RDLC/Word)",    "ats": "RDLC Reports, Word Layouts, Report Builder",          "icon": { "type": "lucide", "name": "FileText" } },
-                { "title": "AL Test Toolkit",    "ats": "AL Test Toolkit, Automated Testing",                  "icon": { "type": "lucide", "name": "TestTube" } }
+                { "title": "AL Test Toolkit",    "ats": "AL Test Toolkit, Automated Testing",                  "icon": { "type": "lucide", "name": "FlaskConical" } }
             ]
         },
         {
-            "title": "Microsoft Ecosystem & Integrations",
+            "title": "Microsoft Ecosystem & Cloud",
             "skills": [
                 { "title": "Azure Cloud",        "ats": "Microsoft Azure",                                     "icon": { "type": "lucide", "name": "Cloud" } },
                 { "title": "OData & REST APIs",  "ats": "OData, RESTful APIs, Web Services",                   "icon": { "type": "lucide", "name": "Globe" } },
                 { "title": "Power Automate",     "ats": "Microsoft Power Automate (Flow)",                     "icon": { "type": "lucide", "name": "Workflow" } },
                 { "title": "Power BI",           "ats": "Power BI, Data Analytics",                            "icon": { "type": "lucide", "name": "BarChart3" } },
                 { "title": "Power Apps",         "ats": "Microsoft Power Apps",                                "icon": { "type": "lucide", "name": "Smartphone" } },
-                { "title": "SQL Server",         "ats": "Microsoft SQL Server, T-SQL",                         "icon": { "type": "lucide", "name": "Database" } }
+                { "title": "SQL Server",         "ats": "Microsoft SQL Server, T-SQL",                         "icon": { "type": "lucide", "name": "Database" } },
+                { "title": "Azure Functions",    "ats": "Azure Functions, serverless compute, event triggers",  "icon": { "type": "lucide", "name": "Zap" } }
             ]
         },
         {
-            "title": "Software Engineering & DevOps",
+            "title": "Engineering Leadership & Delivery",
             "skills": [
-                { "title": "Azure DevOps",       "subtitle": "CI/CD for AL",   "ats": "Azure DevOps, CI/CD pipelines for AL",                "icon": { "type": "lucide", "name": "Rocket" } },
-                { "title": "Git Version Control","ats": "Git, GitHub",                                         "icon": { "type": "lucide", "name": "GitBranch" } },
-                { "title": "Agile / Scrum",      "ats": "Agile, Scrum Methodologies",                          "icon": { "type": "lucide", "name": "Users" } },
-                { "title": "Control Add-ins",    "subtitle": "JS/TS",          "ats": "JavaScript, TypeScript, BC Control Add-ins",          "icon": { "type": "svg", "id": "typescript" } },
-                { "title": "System Architecture","ats": "System Architecture, Event-Driven",                   "icon": { "type": "lucide", "name": "Layers" } }
+                { "title": "Team Leadership",      "ats": "Engineering team leadership, people management, technical direction",         "icon": { "type": "lucide", "name": "Users" } },
+                { "title": "Technical Mentorship", "ats": "Technical mentorship, developer coaching, code review culture",               "icon": { "type": "lucide", "name": "GraduationCap" } },
+                { "title": "Agile / Scrum",        "ats": "Agile, Scrum methodologies, sprint planning, retrospectives",                "icon": { "type": "lucide", "name": "Repeat" } },
+                { "title": "System Architecture",  "ats": "System architecture, event-driven design, distributed systems",              "icon": { "type": "lucide", "name": "Layers" } },
+                { "title": "Azure DevOps",         "subtitle": "CI/CD", "ats": "Azure DevOps, CI/CD pipelines for AL",                  "icon": { "type": "lucide", "name": "Rocket" } },
+                { "title": "Git Version Control",  "ats": "Git, GitHub",                                                                "icon": { "type": "lucide", "name": "GitBranch" } },
+                { "title": "Control Add-ins",      "subtitle": "JS/TS",  "ats": "JavaScript, TypeScript, BC Control Add-ins",           "icon": { "type": "svg",    "id": "typescript" } }
             ]
         }
     ],
@@ -55,14 +77,14 @@
     "experiences": [
         {
             "company": "Independent Consulting",
-            "role": "Dynamics 365 Business Central Technical Architect",
+            "role": "Agentic AI & D365 BC Technical Architect",
             "date": "01/2026 – Present",
             "location": "Ho Chi Minh City, Vietnam",
             "bullets": [
-                "Architected and implemented enterprise-grade Dynamics 365 Business Central solutions, focusing on extensive AL customization and seamlessly integrating core financial modules with external platforms.",
-                "Engineered complex system integrations using OData APIs and Azure Functions to connect Business Central with third-party CRM and logistics systems, ensuring real-time data synchronization.",
-                "Designed and automated business workflows leveraging Power Automate and Power Apps, driving process efficiency and reducing manual data entry overhead by 40%.",
-                "Established robust Azure DevOps CI/CD pipelines tailored for AL extensions, incorporating the AL Test Toolkit for automated validation and zero-regression deployment cycles."
+                "Dedicated this period to deep Agentic AI mastery — earning both the Microsoft Certified: Agentic AI Business Solutions Architect and the Claude Certified Architect – Foundations (CCA-F) credentials — and applying that expertise directly in client-facing AI solution design from day one.",
+                "Architected production-ready agentic systems: RAG pipelines surfacing ERP knowledge bases in conversational AI interfaces, HITL approval loops integrating AI recommendations into Business Central workflow chains, and multi-agent orchestration using LangChain/LangGraph and the Anthropic Claude SDK.",
+                "Engineered context engineering and loop engineering patterns to manage token budgets, control agentic exit conditions, and prevent runaway loops — then validated output quality through structured prompt harnesses and LLM evaluation frameworks before client deployment.",
+                "Continued core D365 BC consulting in parallel: engineered OData/Azure Function integrations, built resilient REST API layers for CRM and logistics sync, and established Azure DevOps CI/CD pipelines with AL Test Toolkit for zero-regression deployments."
             ]
         },
         {
@@ -71,33 +93,35 @@
             "date": "01/2023 – 11/2025",
             "location": "Ho Chi Minh City, Vietnam",
             "bullets": [
-                "Led the technical migration and implementation of Dynamics 365 Business Central, extending standard ERP functionalities via custom AL development to support specialized manufacturing workflows.",
-                "Developed high-performance custom modules and tailored RDLC reports for inventory and production management, resolving bottlenecks in the supply chain data process.",
-                "Built resilient RESTful API integration layers to synchronize Business Central data with internal microservices, achieving a 99.95% uptime SLA and real-time operational visibility.",
-                "Mentored engineering teams on AL best practices, clean code principles, and efficient extension architecture, reducing technical debt and improving system maintainability."
+                "Led the technical implementation and evolution of D365 BC at CADDi — an AI-native manufacturing platform — extending the ERP with custom AL modules tightly coupled to AI-driven parts procurement and cost-estimation workflows.",
+                "Drove internal AI capability building across 2023–2025: ran LLM-assisted demand-classification pilots, built RAG-based retrieval over manufacturing knowledge bases, and engineered prompt pipelines connecting Business Central operational data to AI inference services — gaining hands-on agentic AI experience in a production AI environment.",
+                "Applied early context engineering and harness engineering practices to manage LLM prompt quality and evaluate output accuracy for internal tools, establishing the team's first structured AI quality standards.",
+                "Built resilient RESTful API layers synchronising Business Central with internal microservices and AI services, achieving 99.95% uptime SLA and real-time operational visibility across production and procurement."
             ]
         },
         {
             "company": "Kydon Group",
-            "role": "Technical Lead / System Integration Specialist",
+            "role": "Technical Lead & Engineering Manager",
             "date": "09/2020 – 08/2022",
             "location": "Singapore",
             "bullets": [
-                "Spearheaded the integration of enterprise systems, connecting proprietary learning platforms with corporate ERP applications (including D365 BC) via robust semantic API integrations.",
-                "Developed scalable backend services to handle cross-system data synchronization for 10K+ concurrent users, utilizing Event-Driven Architecture to reduce latency and data discrepancies.",
-                "Collaborated with business stakeholders to map complex organizational processes into technical ERP configurations and custom logic.",
-                "Implemented enterprise-wide design systems and streamlined API structures, reducing cross-team integration overhead by 30%."
+                "Managed two engineering teams sequentially over the two-year tenure: led a 5-person Vietnamese engineering team in year one, then stepped up to manage a 7-person cross-border team spanning Singapore and Vietnam in year two — owning hiring, performance reviews, sprint planning, and technical direction for both cohorts.",
+                "Drove stakeholder alignment across product, business, and regional leadership in both Singapore and Vietnam, translating complex technical trade-offs into structured decision frameworks that accelerated executive buy-in on major platform architecture decisions.",
+                "Spearheaded enterprise system integrations connecting proprietary learning platforms with corporate ERP applications (including D365 BC) via semantic API layers, supporting 10K+ concurrent users with event-driven architecture that reduced data-synchronisation latency by 60%.",
+                "Implemented enterprise-wide design systems and standardised API contracts across both teams, reducing cross-team integration overhead by 30% and embedding a documentation-first engineering culture.",
+                "Championed the organisation's first ML-assisted content personalisation exploration in 2022 — the genesis of a personal specialisation in applied AI and agentic systems that has since been formalised through industry certifications."
             ]
         },
         {
             "company": "Vincere.io",
-            "role": "Senior Integration Developer",
+            "role": "Senior Integration Developer & Technical Lead",
             "date": "09/2019 – 09/2020",
             "location": "Vietnam",
             "bullets": [
-                "Orchestrated scalable data pipelines between a high-volume recruitment CRM and various client ERP and financial systems, including Microsoft Dynamics NAV / Business Central.",
-                "Automated data extraction, transformation, and load (ETL) processes, ensuring high-fidelity data migration and continuous synchronization.",
-                "Engineered multi-tenant API integrations to support a global client base, ensuring stringent data privacy, security boundaries, and high-availability operations."
+                "Managed direct reports as technical lead of the integrations workstream — providing hands-on mentorship, structured code reviews, and career development support while simultaneously defining API contracts and owning architectural decisions across the team's delivery.",
+                "Orchestrated scalable data pipelines between Vincere's high-volume recruitment CRM and client ERP and financial systems — including Microsoft Dynamics NAV / Business Central — automating ETL processes that maintained high-fidelity data synchronisation at scale.",
+                "Engineered multi-tenant API integrations with stringent data-privacy boundaries and high-availability guarantees, establishing cross-region compliance patterns that became the platform's integration standard for new enterprise accounts.",
+                "Collaborated closely with product and customer-success teams to translate complex client integration requirements into reusable connector frameworks, significantly compressing time-to-onboard for enterprise accounts globally."
             ]
         },
         {
@@ -106,9 +130,9 @@
             "date": "12/2018 – 08/2019",
             "location": "Vietnam",
             "bullets": [
-                "Developed and maintained complex transaction processing systems with a focus on fault-tolerance and secure data handling, foundational skills highly applicable to robust ERP architecture.",
+                "Developed and maintained complex transaction processing systems with a focus on fault-tolerance and secure data handling, foundational skills highly applicable to robust ERP and AI system architecture.",
                 "Conducted rigorous testing and formal verification of data processing logic to prevent vulnerabilities, maintaining an exceptional standard of code quality through TDD.",
-                "Gained deep expertise in handling scalable databases and optimizing query performance to ensure sub-100ms response times for critical business applications."
+                "Gained deep expertise in handling scalable databases and optimising query performance to ensure sub-100ms response times for critical business applications."
             ]
         },
         {
@@ -117,9 +141,9 @@
             "date": "08/2017 – 12/2018",
             "location": "Vietnam",
             "bullets": [
-                "Contributed to the development and customization of enterprise-level applications, integrating various backend microservices and databases.",
-                "Optimized data querying and system rendering pathways, successfully reducing system latency and enhancing overall application efficiency for large-scale enterprise clients.",
-                "Participated actively in Agile delivery pods, driving the implementation of CI/CD practices to automate release processes and minimize deployment downtime."
+                "Contributed to the development and customisation of enterprise-level applications, integrating various backend microservices and databases.",
+                "Optimised data querying and system rendering pathways, successfully reducing system latency and enhancing overall application efficiency for large-scale enterprise clients.",
+                "Participated actively in Agile delivery pods, driving the implementation of CI/CD practices to automate release processes and minimise deployment downtime."
             ]
         },
         {
@@ -128,8 +152,8 @@
             "date": "04/2016 – 08/2017",
             "location": "Vietnam",
             "bullets": [
-                "Engineered massive data ingestion and migration pipelines, structuring 50K+ unstructured records into centralized relational databases, comparable to large-scale ERP data migrations.",
-                "Designed and optimized complex SQL queries for advanced reporting and auditing, reducing manual record analysis time by 70%.",
+                "Engineered massive data ingestion and migration pipelines, structuring 50K+ unstructured records into centralised relational databases — a formative experience directly transferable to large-scale ERP data migrations.",
+                "Designed and optimised complex SQL queries for advanced reporting and auditing, reducing manual record analysis time by 70%.",
                 "Developed secure data-sharing protocols and data models, establishing foundational skills in database management and system integration."
             ]
         }
@@ -144,11 +168,11 @@
     },
 
     "certifications": [
-        { "title": "Microsoft Certified: Dynamics 365 Business Central Functional Consultant Associate",    "issuedBy": "Microsoft",            "url": "https://learn.microsoft.com/en-us/users/zintaen/credentials/30a639686d5425f0",                        "badgeImage": "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg" },
         { "title": "Microsoft Certified: Agentic AI Business Solutions Architect",                          "issuedBy": "Microsoft",            "url": "https://learn.microsoft.com/en-us/users/zintaen/credentials/2dd159c1a8721db6",                        "badgeImage": "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-expert-badge.svg" },
-        { "title": "Microsoft Certified: Fabric Analytics Engineer Associate",                              "issuedBy": "Microsoft",            "url": "https://learn.microsoft.com/en-us/users/zintaen/credentials/a8b4d8cd658949ac",                        "badgeImage": "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg" },
-        { "title": "Microsoft Certified: AI Transformation Leader",                                         "issuedBy": "Microsoft",            "url": "https://learn.microsoft.com/en-us/users/zintaen/credentials/317ca0f98deaa138",                        "badgeImage": "https://learn.microsoft.com/media/learn/certification/badges/ai-transformation-leader.svg" },
         { "title": "Claude Certified Architect – Foundations (CCA-F)",                                       "issuedBy": "Anthropic Education",  "url": "https://verify.skilljar.com/c/4dhjr6apfgpd",                                                         "badgeImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPsCP0_NG-S10g4EQ8HIdxm6RJWS8AvZsPVw&s" },
+        { "title": "Microsoft Certified: AI Transformation Leader",                                         "issuedBy": "Microsoft",            "url": "https://learn.microsoft.com/en-us/users/zintaen/credentials/317ca0f98deaa138",                        "badgeImage": "https://learn.microsoft.com/media/learn/certification/badges/ai-transformation-leader.svg" },
+        { "title": "Microsoft Certified: Fabric Analytics Engineer Associate",                              "issuedBy": "Microsoft",            "url": "https://learn.microsoft.com/en-us/users/zintaen/credentials/a8b4d8cd658949ac",                        "badgeImage": "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg" },
+        { "title": "Microsoft Certified: Dynamics 365 Business Central Functional Consultant Associate",    "issuedBy": "Microsoft",            "url": "https://learn.microsoft.com/en-us/users/zintaen/credentials/30a639686d5425f0",                        "badgeImage": "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg" },
         { "title": "AI Workplace Proficiency Certification",                                                "issuedBy": "Superhuman",           "url": "https://education.superhuman.ai/certificates/lvsyyjlokr",                                            "badgeImage": "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/publication/logo/faa6a747-8c1c-43c1-8155-91aa43268f01/Ad_9_2.png" },
         { "title": "Google Certified Educator Level 2",                                                     "issuedBy": "Google for Education", "url": "https://edu.google.accredible.com/74b9ea5e-165f-4871-a522-fff61a35080c",                             "badgeImage": "https://templates.images.credential.net/16231102294348353124512105608042.png" },
         { "title": "Google Certified Educator Level 1",                                                     "issuedBy": "Google for Education", "url": "https://edu.google.accredible.com/77a264c2-6f20-42dc-99cd-61a7bee8ce69",                             "badgeImage": "https://templates.images.credential.net/16231100289992143103707929119847.png" },
