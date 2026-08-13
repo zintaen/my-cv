@@ -50,10 +50,14 @@ import puppeteer from 'puppeteer';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 
+const PDF_FILENAME = 'Stephen_Cheng_CV.pdf';
 const OUTPUT = resolve(
     ROOT,
-    process.argv[2] || 'dist/Stephen_Cheng_CV.pdf',
+    process.argv[2] || `dist/${PDF_FILENAME}`,
 );
+// Vite serves `public/` during local development. Keep a development copy in
+// sync so DOWNLOAD PDF never falls through to Vite's HTML fallback.
+const PUBLIC_OUTPUT = resolve(ROOT, `public/${PDF_FILENAME}`);
 const PORT = Number(process.env.PDF_PORT || 4173);
 const URL = `http://127.0.0.1:${PORT}/`;
 /** Hard ceiling so CI never hangs the deploy job. */
@@ -471,6 +475,11 @@ async function renderPdf() {
         const out = await pdfDoc.save({ useObjectStreams: true });
         fs.mkdirSync(dirname(OUTPUT), { recursive: true });
         fs.writeFileSync(OUTPUT, out);
+
+        if (OUTPUT !== PUBLIC_OUTPUT) {
+            fs.mkdirSync(dirname(PUBLIC_OUTPUT), { recursive: true });
+            fs.copyFileSync(OUTPUT, PUBLIC_OUTPUT);
+        }
 
         const sizeKb = Math.round(out.length / 1024);
         console.log(`✅ PDF ready → ${OUTPUT} (${sizeKb} KB)`);

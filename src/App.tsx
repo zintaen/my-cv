@@ -63,7 +63,7 @@ export default function App() {
                             {isDark ? 'LIGHT MODE' : 'DARK MODE'}
                         </button>
                         <a
-                            href="/Stephen_Cheng_CV.pdf"
+                            href={`${import.meta.env.BASE_URL}Stephen_Cheng_CV.pdf`}
                             download="Stephen_Cheng_CV.pdf"
                             className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-sm bg-gradient-to-r from-primary to-primary-container text-surface hover:opacity-90 font-mono font-bold text-sm tracking-wide shadow-[0_0_24px_rgba(242,202,80,0.15)]"
                         >
