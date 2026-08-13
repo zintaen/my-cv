@@ -103,7 +103,9 @@ export function Sidebar({ profile, skillGroups, professionalSummary }: SidebarPr
 
             {/* Technical Skills */}
             <section aria-label="Technical Skills" className="space-y-10">
-                <h2 className="sr-only">Technical Skills</h2>
+                <h2 className="font-mono text-xs tracking-[0.2em] text-on-surface-variant uppercase text-center border-b border-outline-variant/50 pb-2">
+                    Technical Skills
+                </h2>
                 {skillGroups.map((group) => (
                     <SkillBlock key={group.title} group={group} />
                 ))}

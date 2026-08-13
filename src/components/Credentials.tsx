@@ -32,7 +32,12 @@ export function Credentials({
 
             {/* Education */}
             <section aria-labelledby="education-heading" className="mb-8 avoid-break">
-                <h3 id="education-heading" className="sr-only">Education</h3>
+                <h3
+                    id="education-heading"
+                    className="font-sans font-medium text-sm text-on-surface-variant mb-4"
+                >
+                    Education
+                </h3>
                 <div className="flex gap-4 items-start">
                     <div className="w-12 h-12 rounded-sm bg-red-900/40 text-red-400 border border-red-900/50 flex flex-col items-center justify-center text-[8px] font-mono leading-none tracking-tighter shrink-0 text-center whitespace-pre-line overflow-hidden p-1">
                         {academic.iconImage ? (
