@@ -33,14 +33,14 @@
  *
  *  Usage
  *  -----
- *    pnpm pdf                  → writes ./public/Stephen_Cheng_CV.pdf
+ *    pnpm pdf                  → writes ./dist/Stephen_Cheng_CV.pdf
  *    pnpm pdf ./out/cv.pdf     → custom output path
  */
 
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import http from 'node:http';
-import { dirname, extname, join, resolve } from 'node:path';
+import { dirname, extname, isAbsolute, join, relative, resolve } from 'node:path';
 import process from 'node:process';
 import { fileURLToPath } from 'node:url';
 
@@ -50,10 +50,14 @@ import puppeteer from 'puppeteer';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 
+const PDF_FILENAME = 'Stephen_Cheng_CV.pdf';
 const OUTPUT = resolve(
     ROOT,
-    process.argv[2] || 'dist/Stephen_Cheng_CV.pdf',
+    process.argv[2] || `dist/${PDF_FILENAME}`,
 );
+// Vite serves `public/` during local development. Keep a development copy in
+// sync so DOWNLOAD PDF never falls through to Vite's HTML fallback.
+const PUBLIC_OUTPUT = resolve(ROOT, `public/${PDF_FILENAME}`);
 const PORT = Number(process.env.PDF_PORT || 4173);
 const URL = `http://127.0.0.1:${PORT}/`;
 /** Hard ceiling so CI never hangs the deploy job. */
@@ -94,7 +98,8 @@ function startStaticServer(distDir) {
                 let rel = raw === '/' ? '/index.html' : raw;
                 // Prevent path traversal
                 const filePath = resolve(distDir, `.${rel}`);
-                if (!filePath.startsWith(distDir)) {
+                const relativePath = relative(distDir, filePath);
+                if (relativePath.startsWith('..') || isAbsolute(relativePath)) {
                     res.writeHead(403).end('Forbidden');
                     return;
                 }
@@ -130,8 +135,8 @@ function startVite() {
         console.log(`🚀 Starting Vite (${cmd}) on :${PORT}…`);
 
         const proc = spawn(
-            'npx',
-            ['vite', cmd, '--port', String(PORT), '--host', '127.0.0.1', '--strictPort'],
+            process.platform === 'win32' ? 'pnpm.cmd' : 'pnpm',
+            ['exec', 'vite', cmd, '--port', String(PORT), '--host', '127.0.0.1', '--strictPort'],
             { cwd: ROOT, stdio: ['ignore', 'pipe', 'pipe'] },
         );
 
@@ -340,6 +345,8 @@ async function renderPdf() {
                 '/usr/bin/google-chrome-stable',
                 '/usr/bin/chromium',
                 '/usr/bin/chromium-browser',
+                '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+                '/Applications/Chromium.app/Contents/MacOS/Chromium',
             ];
             execPath = fallbackChromes.find((p) => fs.existsSync(p));
         }
@@ -360,7 +367,16 @@ async function renderPdf() {
             ],
         };
         if (execPath) launchOpts.executablePath = execPath;
-        browser = await puppeteer.launch(launchOpts);
+        try {
+            browser = await puppeteer.launch(launchOpts);
+        } catch (err) {
+            const macChrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+            if (process.platform !== 'darwin' || execPath === macChrome || !fs.existsSync(macChrome)) {
+                throw err;
+            }
+            console.warn('Bundled Chrome could not launch; retrying with installed Google Chrome.');
+            browser = await puppeteer.launch({ ...launchOpts, executablePath: macChrome });
+        }
 
         const page = await browser.newPage();
 
@@ -459,6 +475,11 @@ async function renderPdf() {
         const out = await pdfDoc.save({ useObjectStreams: true });
         fs.mkdirSync(dirname(OUTPUT), { recursive: true });
         fs.writeFileSync(OUTPUT, out);
+
+        if (OUTPUT !== PUBLIC_OUTPUT) {
+            fs.mkdirSync(dirname(PUBLIC_OUTPUT), { recursive: true });
+            fs.copyFileSync(OUTPUT, PUBLIC_OUTPUT);
+        }
 
         const sizeKb = Math.round(out.length / 1024);
         console.log(`✅ PDF ready → ${OUTPUT} (${sizeKb} KB)`);

@@ -53,14 +53,11 @@ jobs:
 
       - name: Generate PDF
         timeout-minutes: 3
-        run: pnpm run pdf public/Stephen_Cheng_CV.pdf
+        run: pnpm run pdf
         env:
           PUPPETEER_EXECUTABLE_PATH: ${{ env.PUPPETEER_EXECUTABLE_PATH }}
           PDF_TIMEOUT_MS: "90000"
 
-      # Rebuild so dist/ includes the freshly generated PDF from public/.
-      - name: Rebuild with PDF asset
-        run: pnpm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

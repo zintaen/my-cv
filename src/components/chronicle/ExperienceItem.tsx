@@ -44,7 +44,7 @@ export function ExperienceItem({ exp }: { exp: Experience }) {
                 <h3 className="font-serif text-2xl font-bold text-primary mb-1">
                     {exp.company}
                 </h3>
-                <p className="font-sans text-lg font-bold text-white mb-4">
+                <p className="font-sans text-lg font-bold text-on-surface mb-4">
                     {exp.role}
                 </p>
 

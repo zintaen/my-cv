@@ -1,7 +1,19 @@
+import { Moon, Sun } from 'lucide-react';
+import { useEffect, useState } from 'react';
+
 import { Chronicle } from './components/Chronicle';
 import { Credentials } from './components/Credentials';
 import { Sidebar } from './components/Sidebar';
 import { cvData } from './data/cv';
+
+type Theme = 'dark' | 'light';
+
+function getInitialTheme(): Theme {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark' || savedTheme === 'light') return savedTheme;
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
 
 /**
  * Top-level layout.
@@ -19,6 +31,15 @@ import { cvData } from './data/cv';
  * <h1>–<h3>/<ul>/<li>, and there's no CSS zoom distorting glyph extraction.
  */
 export default function App() {
+    const [theme, setTheme] = useState<Theme>(getInitialTheme);
+
+    useEffect(() => {
+        document.documentElement.dataset.theme = theme;
+        localStorage.setItem('theme', theme);
+    }, [theme]);
+
+    const isDark = theme === 'dark';
+
     return (
         <div
             id="cv-root"
@@ -30,13 +51,25 @@ export default function App() {
                     <p className="font-mono text-sm tracking-widest text-on-surface-variant uppercase">
                         Resume
                     </p>
-                    <a
-                        href="/Stephen_Cheng_CV.pdf"
-                        download="Stephen_Cheng_CV.pdf"
-                        className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-sm bg-gradient-to-r from-primary to-primary-container text-surface hover:opacity-90 font-mono font-bold text-sm tracking-wide shadow-[0_0_24px_rgba(242,202,80,0.15)]"
-                    >
-                        DOWNLOAD PDF
-                    </a>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                        <button
+                            type="button"
+                            onClick={() => setTheme(isDark ? 'light' : 'dark')}
+                            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-sm border border-outline-variant bg-surface-container text-on-surface hover:bg-surface-highest font-mono font-bold text-sm tracking-wide"
+                            aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+                            aria-pressed={isDark}
+                        >
+                            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                            {isDark ? 'LIGHT MODE' : 'DARK MODE'}
+                        </button>
+                        <a
+                            href={`${import.meta.env.BASE_URL}Stephen_Cheng_CV.pdf`}
+                            download="Stephen_Cheng_CV.pdf"
+                            className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-sm bg-gradient-to-r from-primary to-primary-container text-surface hover:opacity-90 font-mono font-bold text-sm tracking-wide shadow-[0_0_24px_rgba(242,202,80,0.15)]"
+                        >
+                            DOWNLOAD PDF
+                        </a>
+                    </div>
                 </header>
 
                 <div

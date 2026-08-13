@@ -3,12 +3,13 @@
   "type": "module",
   "version": "2.0.0",
   "private": true,
-  "description": "Stephen Cheng — ATS-optimized CV. Single-source React/Vite site + native A4 tagged-PDF export.",
+  "description": "Stephen Cheng \u2014 ATS-optimized CV. Single-source React/Vite site + native A4 tagged-PDF export.",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "pdf": "node scripts/build-pdf.mjs"
+    "pdf": "node scripts/build-pdf.mjs",
+    "check:data": "node scripts/check-cv-data.mjs"
   },
   "dependencies": {
     "lucide-react": "1.8.0",

@@ -38,7 +38,7 @@ export function Sidebar({ profile, skillGroups, professionalSummary }: SidebarPr
                     </div>
 
                     <div>
-                        <h1 className="font-serif text-2xl md:text-3xl font-bold leading-tight tracking-tight text-white">
+                        <h1 className="font-serif text-2xl md:text-3xl font-bold leading-tight tracking-tight text-on-surface">
                             {profile.name}
                         </h1>
                         <p className="font-mono text-primary tracking-widest text-[11px] font-semibold mt-2 uppercase">
@@ -103,7 +103,9 @@ export function Sidebar({ profile, skillGroups, professionalSummary }: SidebarPr
 
             {/* Technical Skills */}
             <section aria-label="Technical Skills" className="space-y-10">
-                <h2 className="sr-only">Technical Skills</h2>
+                <h2 className="font-mono text-xs tracking-[0.2em] text-on-surface-variant uppercase text-center border-b border-outline-variant/50 pb-2">
+                    Technical Skills
+                </h2>
                 {skillGroups.map((group) => (
                     <SkillBlock key={group.title} group={group} />
                 ))}

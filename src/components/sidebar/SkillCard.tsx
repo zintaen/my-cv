@@ -21,7 +21,7 @@ export function SkillCard({ skill }: { skill: Skill }) {
             <div className="flex items-center justify-center w-7 h-7 mb-2 opacity-90 shrink-0">
                 <IconRenderer icon={skill.icon} className="w-full h-full object-contain" />
             </div>
-            <div className="font-sans font-medium text-[10px] leading-tight text-white mb-0.5 px-1">
+            <div className="font-sans font-medium text-[10px] leading-tight text-on-surface mb-0.5 px-1">
                 {skill.title}
             </div>
             {skill.subtitle && (

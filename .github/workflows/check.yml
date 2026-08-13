@@ -15,5 +15,10 @@ jobs:
       - name: Env & Deps
         uses: cyberskill-world/.github/actions/env-deps@main
 
+      - name: Validate CV content and production build
+        run: |
+          pnpm run check:data
+          pnpm run build
+
       - name: Lint
         uses: cyberskill-world/.github/actions/lint@main
