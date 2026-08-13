@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./cv.schema.json",
+  "title": "CV content",
+  "type": "object",
+  "required": ["profile", "professionalSummary", "skillGroups", "experiences", "academic", "certifications"],
+  "properties": {
+    "profile": { "type": "object", "required": ["name", "title", "contact", "avatar"] },
+    "professionalSummary": { "type": "string", "minLength": 1 },
+    "skillGroups": { "type": "array", "minItems": 1 },
+    "experiences": { "type": "array", "minItems": 1 },
+    "academic": { "type": "object" },
+    "certifications": { "type": "array" }
+  }
+}
