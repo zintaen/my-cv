@@ -341,6 +341,8 @@ async function renderPdf() {
                 '/usr/bin/google-chrome-stable',
                 '/usr/bin/chromium',
                 '/usr/bin/chromium-browser',
+                '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+                '/Applications/Chromium.app/Contents/MacOS/Chromium',
             ];
             execPath = fallbackChromes.find((p) => fs.existsSync(p));
         }
@@ -361,7 +363,16 @@ async function renderPdf() {
             ],
         };
         if (execPath) launchOpts.executablePath = execPath;
-        browser = await puppeteer.launch(launchOpts);
+        try {
+            browser = await puppeteer.launch(launchOpts);
+        } catch (err) {
+            const macChrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+            if (process.platform !== 'darwin' || execPath === macChrome || !fs.existsSync(macChrome)) {
+                throw err;
+            }
+            console.warn('Bundled Chrome could not launch; retrying with installed Google Chrome.');
+            browser = await puppeteer.launch({ ...launchOpts, executablePath: macChrome });
+        }
 
         const page = await browser.newPage();
 
