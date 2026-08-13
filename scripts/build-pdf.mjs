@@ -33,14 +33,14 @@
  *
  *  Usage
  *  -----
- *    pnpm pdf                  → writes ./public/Stephen_Cheng_CV.pdf
+ *    pnpm pdf                  → writes ./dist/Stephen_Cheng_CV.pdf
  *    pnpm pdf ./out/cv.pdf     → custom output path
  */
 
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import http from 'node:http';
-import { dirname, extname, join, resolve } from 'node:path';
+import { dirname, extname, isAbsolute, join, relative, resolve } from 'node:path';
 import process from 'node:process';
 import { fileURLToPath } from 'node:url';
 
@@ -94,7 +94,8 @@ function startStaticServer(distDir) {
                 let rel = raw === '/' ? '/index.html' : raw;
                 // Prevent path traversal
                 const filePath = resolve(distDir, `.${rel}`);
-                if (!filePath.startsWith(distDir)) {
+                const relativePath = relative(distDir, filePath);
+                if (relativePath.startsWith('..') || isAbsolute(relativePath)) {
                     res.writeHead(403).end('Forbidden');
                     return;
                 }
@@ -130,8 +131,8 @@ function startVite() {
         console.log(`🚀 Starting Vite (${cmd}) on :${PORT}…`);
 
         const proc = spawn(
-            'npx',
-            ['vite', cmd, '--port', String(PORT), '--host', '127.0.0.1', '--strictPort'],
+            process.platform === 'win32' ? 'pnpm.cmd' : 'pnpm',
+            ['exec', 'vite', cmd, '--port', String(PORT), '--host', '127.0.0.1', '--strictPort'],
             { cwd: ROOT, stdio: ['ignore', 'pipe', 'pipe'] },
         );
 
