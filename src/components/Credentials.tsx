@@ -72,7 +72,7 @@ export function Credentials({
                 >
                     Certifications
                 </h3>
-                <ul className="grid grid-cols-2 gap-x-6 gap-y-3 list-none p-0 m-0">
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3 list-none p-0 m-0">
                     {certifications.map((c) => (
                         <CertItem key={c.url} cert={c} />
                     ))}
