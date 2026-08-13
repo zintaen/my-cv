@@ -33,6 +33,11 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
 /* ──────────────────────────────────────────────────────────────────────
  *  ATS helper — visually-hidden but selectable/readable by text extractors.
  *  Do NOT use `display: none` (parsers skip that). Do NOT use visibility.
