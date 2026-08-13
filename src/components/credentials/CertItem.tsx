@@ -44,7 +44,7 @@ export function CertItem({ cert }: { cert: Certification }) {
                     )}
                 </div>
                 <div className="flex-1">
-                    <div className="font-sans text-sm text-white font-medium leading-tight">
+                    <div className="font-sans text-sm text-on-surface font-medium leading-tight">
                         {cert.title}
                     </div>
                     <div className="font-mono text-[10px] uppercase tracking-wider text-on-surface-variant mt-1">

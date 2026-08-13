@@ -39,7 +39,7 @@ export function Credentials({
                     Education
                 </h3>
                 <div className="flex gap-4 items-start">
-                    <div className="w-12 h-12 rounded-sm bg-red-900/40 text-red-400 border border-red-900/50 flex flex-col items-center justify-center text-[8px] font-mono leading-none tracking-tighter shrink-0 text-center whitespace-pre-line overflow-hidden p-1">
+                    <div className="w-12 h-12 rounded-sm bg-surface-container text-primary border border-outline-variant/50 flex flex-col items-center justify-center text-[8px] font-mono leading-none tracking-tighter shrink-0 text-center whitespace-pre-line overflow-hidden p-1">
                         {academic.iconImage ? (
                             <img
                                 src={academic.iconImage}
@@ -51,7 +51,7 @@ export function Credentials({
                         )}
                     </div>
                     <div>
-                        <p className="font-sans font-semibold text-lg text-white">
+                        <p className="font-sans font-semibold text-lg text-on-surface">
                             {academic.institution}
                         </p>
                         <p className="font-sans text-on-surface-variant text-sm mt-0.5">
